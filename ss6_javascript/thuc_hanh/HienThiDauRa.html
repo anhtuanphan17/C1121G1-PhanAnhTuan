@@ -5,27 +5,17 @@
     <title>Hien Thi Dau </title>
 </head>
 <body>
-<button type="button" onclick="showMessage();">Click Me!</button>
-<script>
-    function showMessage(){
-        alert('Xin chào!');
-    }
-</script>
+
 
 <div id="messageDiv"></div>
 <button type="button" onclick="showMessage();">Click Me!</button>
+
 <script>
     function showMessage(){
-        document.getElementById('messageDiv').innerHTML = 'Xin chào!';
+        document.getElementById('messageDiv').innerText  = 'Xin chào!';
     }
 </script>
 
-<button type="button" onclick="showMessage();">Click Me!</button>
-<script>
-    function showMessage(){
-        document.write('Xin chào!');
-    }
-</script>
 
 
 </body>
