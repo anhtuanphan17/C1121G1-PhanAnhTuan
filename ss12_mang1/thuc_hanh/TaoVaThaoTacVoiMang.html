@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Thao Tac Voi Mang</title>
 </head>
 <body>
-$END$
+<input id="inputValue" type="text">
+<input id="addValue" value="Add" type="button" onclick="addElement()">
+<input id="disPlayvalue" value="Display" type="button" onclick="displayElement()">
+
+<div id="result"></div>
+
+<script>
+
+    let i = 0;
+    let array = Array();
+
+    function addElement() {
+        array[i] = document.getElementById('inputValue').value;
+
+        i++;
+        document.getElementById('inputValue').value = '';
+
+    }
+
+
+    function displayElement() {
+        let e = "<hr/>";
+        for (let j = 0; j < array.length; j++) {
+            e += "Element" + j + '=' + array[j] + '<br/>';
+
+        }
+        document.getElementById("result").innerHTML = e;
+
+
+    }
+
+</script>
+
+
 </body>
 </html>
