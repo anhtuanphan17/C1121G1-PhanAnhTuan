@@ -8,11 +8,18 @@ public class DoiSoThanhChu {
         System.out.println("Enter number: ");
         int number = scan.nextInt();
 
+        if(number>=0&&number<20){
+            System.out.println(number0to19(number));
+        }else if (number>19&&number<100){
+            System.out.println(number20to99(number));
+        }else{
+            System.out.println("out of ability");
+        }
 
     }
 
 
-    public static String number0to9(int number) {
+    public static String number0to19(int number) {
         String result = "";
         switch (number) {
             case 0:
@@ -111,12 +118,13 @@ public class DoiSoThanhChu {
                 result = "Ninety ";
                 break;
         }
-        return result+=unit1to9(number)
+        return result+=unit1to9(number);
 
     }
 
     public static String unit1to9(int number){
         int unit =number%10;
+        String result ="";
         switch (unit) {
             case 0:
                 result = "";
@@ -148,7 +156,7 @@ public class DoiSoThanhChu {
             case 9:
                 result = "Nine";
         }
-
+        return result;
 
 }
 
