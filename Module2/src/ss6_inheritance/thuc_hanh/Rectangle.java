@@ -1,8 +1,11 @@
 package ss6_inheritance.thuc_hanh;
 
-public class Rectangle extends Shape {
+import ss7_abstract_and_interface.bai_tap.bai_tap1.Resizeable;
+
+public class Rectangle extends Shape implements Resizeable {
     private double width = 1.0;
     private double length = 1.0;
+    private double area = 0;
 
     public Rectangle() {
     }
@@ -10,6 +13,7 @@ public class Rectangle extends Shape {
     public Rectangle(double width, double length) {
         this.width = width;
         this.length = length;
+
     }
 
     public Rectangle(double width, double length, String color, boolean filled) {
@@ -35,7 +39,7 @@ public class Rectangle extends Shape {
     }
 
     public double getArea() {
-        return width * this.length;
+        return this.width * this.length;
     }
 
     public double getPerimeter() {
@@ -50,5 +54,12 @@ public class Rectangle extends Shape {
                 + getLength()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        area =  (this.width * this.length)*(percent/100);
+        this.width=this.width+this.width*(percent/100);
+        this.length=this.length+this.length*(percent/100);
     }
 }

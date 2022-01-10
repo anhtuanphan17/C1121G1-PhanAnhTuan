@@ -1,9 +1,9 @@
-package ss6_inheritance.thuc_hanh;
+package ss7_abstract_and_interface.thuc_hanh.thuc_hanh3;
 
-import ss7_abstract_and_interface.bai_tap.bai_tap1.Resizeable;
-
-public class Circle extends Shape implements Resizeable {
+public class Circle {
     public double radius = 1.0;
+    String color;
+    boolean filled;
 
     public Circle() {
     }
@@ -13,7 +13,7 @@ public class Circle extends Shape implements Resizeable {
     }
 
     public Circle(double radius, String color, boolean filled) {
-        super(color, filled);
+
         this.radius = radius;
     }
 
@@ -40,10 +40,4 @@ public class Circle extends Shape implements Resizeable {
                 + ", which is a subclass of "
                 + super.toString();
     }
-
-    @Override
-    public void resize(double percent) {
-        this.radius=this.radius+this.radius*(percent/100);
-    }
 }
-

@@ -10,6 +10,7 @@ public class TestMoveablePoint {
         movablePoint.setX(2);
         movablePoint.setY(5);
 
+
         ((MovablePoint)movablePoint).setXSpeed(2);
         ((MovablePoint)movablePoint).setYSpeed(2);
         System.out.println(movablePoint);

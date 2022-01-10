@@ -1,6 +1,9 @@
 package ss6_inheritance.thuc_hanh;
 
-public class Square extends Rectangle {
+import ss7_abstract_and_interface.bai_tap.bai_tap1.Resizeable;
+import ss7_abstract_and_interface.bai_tap.bai_tap2.Colorable;
+
+public class Square extends Rectangle implements Resizeable, Colorable {
     public Square() {
     }
 
@@ -34,8 +37,18 @@ public class Square extends Rectangle {
     @Override
     public String toString() {
         return "A Square with side="
-                + getSide()
+                + getArea()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        super.resize(percent);
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides..");
     }
 }
