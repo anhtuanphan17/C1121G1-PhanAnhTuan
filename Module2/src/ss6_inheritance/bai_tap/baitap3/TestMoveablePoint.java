@@ -6,13 +6,15 @@ import ss6_inheritance.bai_tap.baitap3.Point;
 public class TestMoveablePoint {
     public static void main(String[] args) {
 
-        Point point = new Point();
-        point.setX(2);
-        point.setY(5);
+        Point movablePoint = new MovablePoint();
+        movablePoint.setX(2);
+        movablePoint.setY(5);
 
-        MovablePoint movablePoint = new MovablePoint(2,5);
-        movablePoint.move();
-        System.out.println(movablePoint.getXY());
+        ((MovablePoint)movablePoint).setXSpeed(2);
+        ((MovablePoint)movablePoint).setYSpeed(2);
+        System.out.println(movablePoint);
+        ((MovablePoint)movablePoint).move();
+        System.out.println(movablePoint);
 
 
 

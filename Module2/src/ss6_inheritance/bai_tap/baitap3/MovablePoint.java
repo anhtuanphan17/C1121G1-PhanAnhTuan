@@ -5,7 +5,8 @@ public class MovablePoint extends Point {
     public float ySpeed = 0.0f;
 
     public MovablePoint(float x, float y, float xSpeed, float ySpeed) {
-        super(x, y);
+        this.x=super.getX();
+        this.y=super.getY();
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
     }
@@ -54,8 +55,8 @@ public class MovablePoint extends Point {
     }
 
     public float[] move() {
-        setX(getX()+getXSpeed());
-        setY(getY()+getYSpeed());
+        setX(getX() + getXSpeed());
+        setY(getY() + getYSpeed());
         return getXY();
     }
 
