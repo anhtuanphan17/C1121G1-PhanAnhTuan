@@ -26,6 +26,8 @@ public class ReverseStringByStack {
            for (int i=0;i<size;i++) {
            result+= stack.pop() +" ";
            }
+
+
        }
         System.out.println(result);
 
