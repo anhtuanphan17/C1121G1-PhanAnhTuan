@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.quan_ly_xe.model;
+package bai_tap_lam_them.quan_ly_xe.model;
 
 public class Car extends MeansofTransportation{
     private String seatNumber ;
@@ -10,5 +10,16 @@ public class Car extends MeansofTransportation{
         this.seatNumber = seatNumber;
         this.typeOfCar = typeOfCar;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +super.toString()+
+                "seatNumber='" + seatNumber + '\'' +
+                ", typeOfCar='" + typeOfCar + '\'' +
+                '}';
+
+
+    }
+
 
 }

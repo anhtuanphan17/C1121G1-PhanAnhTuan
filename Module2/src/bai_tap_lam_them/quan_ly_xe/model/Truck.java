@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.quan_ly_xe.model;
+package bai_tap_lam_them.quan_ly_xe.model;
 
 public class Truck extends MeansofTransportation{
      private String truckLoad;
@@ -11,5 +11,10 @@ public class Truck extends MeansofTransportation{
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Truck{" + super.toString()+
+                "truckLoad='" + truckLoad + '\'' +
+                '}';
+    }
 }
