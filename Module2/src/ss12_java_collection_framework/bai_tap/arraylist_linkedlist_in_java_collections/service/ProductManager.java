@@ -1,30 +1,26 @@
 package ss12_java_collection_framework.bai_tap.arraylist_linkedlist_in_java_collections.service;
 
 import ss12_java_collection_framework.bai_tap.arraylist_linkedlist_in_java_collections.model.Product;
+import ss12_java_collection_framework.bai_tap.arraylist_linkedlist_in_java_collections.service.ultil.DecreasingSort;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class ProductManager implements IProductManager {
 
-
-   private static ArrayList<Product> productArray = new ArrayList<>();
+    private static ArrayList<Product> productArray = new ArrayList<>();
 
     static {
 
-        Product product1 = new Product("Tivi", "212", 25);
-        Product product2 = new Product("Tu Lanh", "215", 50);
-        Product product3 = new Product("May Tinh", "216", 16);
-        Product product4 = new Product("Quat", "219", 7);
+        productArray.add(new Product("Tivi", "212", 25));
+        productArray.add(new Product("Tu Lanh", "213", 42));
+        productArray.add(new Product("May Tinh", "216", 250));
+        productArray.add(new Product("Quat", "219", 7));
+
     }
-
-
-
 
     @Override
     public void display() {
-        for(Product product: productArray){
+        for (Product product : productArray) {
             System.out.println(product);
         }
 
@@ -39,7 +35,7 @@ public class ProductManager implements IProductManager {
         String id = input.nextLine();
         System.out.println("Nhap gia thanh");
         double price = input.nextDouble();
-        Product product = new Product(name,id,price);
+        Product product = new Product(name, id, price);
         productArray.add(product);
         System.err.println("Them moi thanh cong");
 
@@ -47,16 +43,17 @@ public class ProductManager implements IProductManager {
 
     @Override
     public void edit() {
-        Scanner input  = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("input id of product you want to revise");
         String id = input.nextLine();
-        for(int i=0;i<productArray.size();i++){
-            if(productArray.get(i).getId().equals(id)){
+        for (int i = 0; i < productArray.size(); i++) {
+            if (productArray.get(i).getId().equals(id)) {
+                System.out.println(productArray.get(i));
                 System.out.println("input new name ");
-                String newName= input.nextLine();
+                String newName = input.nextLine();
                 productArray.get(i).setProductName(newName);
                 System.out.println("input new price ");
-                double newPrice= input.nextDouble();
+                double newPrice = input.nextDouble();
                 productArray.get(i).setPrice(newPrice);
             }
         }
@@ -66,25 +63,52 @@ public class ProductManager implements IProductManager {
     @Override
     public void remove() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap id can xoa");
+        System.out.println("input id you want to remove");
         String id = input.nextLine();
-        for(int i=0;i<productArray.size();i++){
-            if(productArray.get(i).getId().equals(id)){
-               productArray.remove(productArray.get(i));
-            }else{
-                System.out.println("this id is not in the list");
+        boolean check=true;
+        for (int i = 0; i < productArray.size(); i++) {
+            if (productArray.get(i).getId().equals(id)) {
+                productArray.remove(productArray.get(i));
+                check =false;
+                break;
             }
+        }
+        if(check){
+            System.out.println("Coudn't find this id in curent list");
         }
 
     }
 
     @Override
     public void search() {
-
+        Scanner input = new Scanner(System.in);
+        System.out.println("input name of product you want to search");
+        String searchName = input.nextLine();
+        searchName.toLowerCase();
+        boolean check =true;
+        for (int i = 0; i < productArray.size(); i++) {
+            if (productArray.get(i).getProductName().toLowerCase().equals(searchName)) {
+                System.out.println(productArray.get(i));
+                check =false;
+                break;
+            }
+        }
+        if(check){
+            System.out.println("Coudn't find this name in curent list");
+        }
     }
 
     @Override
     public void sort() {
-
+        Collections.sort(productArray);
+        display();
     }
+
+    @Override
+    public void decreasingSort() {
+        Collections.sort(productArray,new DecreasingSort());
+        display();
+    }
+
+
 }

@@ -7,4 +7,5 @@ public interface IProductManager {
      void remove();
      void search();
      void sort();
+     void decreasingSort();
 }

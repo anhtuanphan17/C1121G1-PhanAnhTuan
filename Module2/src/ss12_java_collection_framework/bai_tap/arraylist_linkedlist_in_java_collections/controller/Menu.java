@@ -18,7 +18,8 @@ public class Menu {
                     "3. Chinh Sua Thong Tin\n" +
                     "4. Xoa San Pham\n" +
                     "5. Tim Kiem San Pham\n" +
-                    "6. Sap Xep San Pham Theo Gia");
+                    "6. Sap Xep San Pham Theo Gia\n"+
+                    "7. Sap Xep Theo Gia Giam Dan");
 
             int chooseNumber = Integer.parseInt(input.nextLine());
             switch (chooseNumber) {
@@ -40,7 +41,9 @@ public class Menu {
                 case 6:
                     productManager.sort();
                     break;
-
+                case 7:
+                    productManager.decreasingSort();
+                    break;
             }
 
         }
