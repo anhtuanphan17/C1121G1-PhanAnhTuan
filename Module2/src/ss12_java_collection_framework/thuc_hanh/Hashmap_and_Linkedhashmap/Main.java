@@ -1,4 +1,6 @@
-package ss12_java_collection_framework.thuc_hanh;
+package ss12_java_collection_framework.thuc_hanh.Hashmap_and_Hashset;
+
+import ss12_java_collection_framework.thuc_hanh.Hashmap_and_Hashset.Student;
 
 import java.util.HashMap;
 import java.util.HashSet;
