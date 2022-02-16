@@ -1,6 +1,6 @@
 package bai_tap_lam_them.quan_ly_xe.model;
 
-public class Car extends MeansofTransportation{
+public class Car extends Vehicle {
     private String seatNumber ;
     private String typeOfCar;
 

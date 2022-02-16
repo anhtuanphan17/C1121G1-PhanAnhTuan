@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.thuc_hanh.Hashmap_and_Hashset;
+package ss12_java_collection_framework.thuc_hanh.Hashmap_and_Linkedhashmap;
 
 public class Student {
     private String name;

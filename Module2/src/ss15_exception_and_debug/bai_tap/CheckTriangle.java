@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class CheckTriangle {
     public static void main(String[] args) {
+
         boolean flag;
         do {
             flag = false;
@@ -17,8 +18,7 @@ public class CheckTriangle {
                 int z = scanner.nextInt();
                 checkTriangle(x, y, z);
             } catch (IllegalTriangleException e) {
-                System.out.println("loi chuong trinh");
-                e.printStackTrace();
+                System.err.println(e.getMessage());
                 flag =true;
             }catch (Exception e){
                 System.out.println("loi khac");
@@ -31,7 +31,7 @@ public class CheckTriangle {
 
     public static void checkTriangle(int x, int y, int z) throws IllegalTriangleException {
         if ((x <= 0 || y <= 0 || z <= 0) || ((x + y) < z || (y + z) < x || (x + z) < y)) {
-            throw new IllegalTriangleException();
+            throw new IllegalTriangleException("loi chuong trinh");
         }
 
     }
