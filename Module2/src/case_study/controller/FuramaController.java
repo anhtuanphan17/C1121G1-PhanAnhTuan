@@ -1,19 +1,19 @@
 package case_study.controller;
 
-import case_study.models.Booking;
-import case_study.service.*;
+import case_study.service.ContractService;
+import case_study.service.implement.*;
 
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FuramaController {
     public static void main(String[] args) {
+
         EmployeeService employeeService = new EmployeeService();
         CustomerService customerService = new CustomerService();
         FacilityService facilityService = new FacilityService();
         BookingService bookingService = new BookingService();
-        ContractService contractService = new ContractService();
+        case_study.service.ContractService contractService = new ContractService();
         PromotionService promotionService = new PromotionService();
         Scanner scanner = new Scanner(System.in);
         int choose =0;

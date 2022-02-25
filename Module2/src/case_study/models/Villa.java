@@ -51,4 +51,9 @@ public class Villa extends Facility {
                 ", floor=" + floor +
                 '}';
     }
+
+    public String getVillaInfo(){
+        return super.getFacilityInfo()+this.roomStandard+","+this.poolArea+","+this.floor;
+    }
+
 }

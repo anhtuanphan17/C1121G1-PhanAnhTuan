@@ -65,4 +65,8 @@ public class Facility {
         this.rentalType = rentalType;
     }
 
+    public String getFacilityInfo(){
+        return this.facilityCode+","+this.nameOfService+","+this.squareMeter+","+this.rentalPrice+","+this.maxCapacity+","+this.rentalType;
+    }
+
 }

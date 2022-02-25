@@ -28,5 +28,9 @@ public class Room extends Facility{
                 ", freeIncludedService='" + freeIncludedService + '\'' +
                 '}';
     }
+
+    public String getRoomInfo(){
+        return super.getFacilityInfo()+","+this.freeIncludedService;
+    }
 }
 

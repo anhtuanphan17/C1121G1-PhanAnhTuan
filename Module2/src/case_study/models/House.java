@@ -42,4 +42,8 @@ public class House extends Facility{
                 ", floor=" + floor +
                 '}';
     }
+
+    public String getHouseInfo(){
+        return super.getFacilityInfo()+","+this.roomStandard+","+this.floor;
+    }
 }

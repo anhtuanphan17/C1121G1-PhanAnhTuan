@@ -98,4 +98,7 @@ public class Booking implements Comparable<Booking> {
         return this.bookingCode - o.bookingCode;
     }
 
+    public String getBookingInfo(){
+        return this.bookingCode+","+this.startDay+","+this.endDay+","+this.customer.getCustomerNumber()+","+this.facilityCode.getFacilityCode()+","+this.serviceName+","+this.typeOfService;
+    }
 }

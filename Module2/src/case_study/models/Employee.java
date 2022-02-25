@@ -61,4 +61,8 @@ public class Employee extends Person{
                 ", email='" + email + '\'' +
                 '}';
     }
+    public String getInfoEmployee(){
+        return super.getInfo()+','+this.employeeNumber+','+this.academicLevel+','+this.position+','+this.salary;
+
+    }
 }

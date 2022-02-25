@@ -59,10 +59,14 @@ public class Contract {
     public String toString() {
         return "Contract{" +
                 "contractNumber='" + contractNumber + '\'' +
-                ", bookingNumber='" + booking + '\'' +
+                ", bookingNumber='" + booking.getBookingCode() + '\'' +
                 ", depositMoney=" + depositMoney +
                 ", totalPayment=" + totalPayment +
-                ", customerCode='" + customer + '\'' +
+                ", customerCode='" + customer.getCustomerNumber() + '\'' +
                 '}';
+    }
+
+    public String getContractInfo() {
+        return this.contractNumber + ',' + this.booking.getBookingCode() + ',' + this.depositMoney + ',' + this.totalPayment + ',' + this.customer.getCustomerNumber();
     }
 }

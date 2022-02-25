@@ -78,4 +78,8 @@ public abstract class Person {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public String getInfo(){
+        return this.name +','+ this.dateOfBirth+','+this.gender+','+this.idNumber+','+this.phoneNumber+','+this.email;
+    }
 }

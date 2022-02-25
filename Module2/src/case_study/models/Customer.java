@@ -5,7 +5,7 @@ public class Customer extends Person{
     private String typeOfCustomer;
     private String address;
 
-    public Customer(String customerNumber,String name,String dateOfBirth,String gender,String idNumber, String phoneNumber,String email,String typeOfCustomer,String address){
+    public Customer(String name,String dateOfBirth,String gender,String idNumber, String phoneNumber,String email,String customerNumber,String typeOfCustomer,String address){
         super(name,dateOfBirth,gender,idNumber,phoneNumber,email);
         this.customerNumber = customerNumber;
         this.typeOfCustomer=typeOfCustomer;
@@ -50,5 +50,10 @@ public class Customer extends Person{
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public String getCustomerInfo(){
+        return this.name+","+this.dateOfBirth+","+this.gender+","+this.idNumber+","+this.phoneNumber+","+this.email+","+this.customerNumber+","+this.typeOfCustomer+","+this.address;
+
     }
 }
