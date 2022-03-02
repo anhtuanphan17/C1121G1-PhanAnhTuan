@@ -1,3 +1,4 @@
+create database furama;
 
 use furama;
 
@@ -23,6 +24,7 @@ ngay_sinh date,
 so_cmnd varchar(50),
 luong double,
 so_dien_thoai varchar(50),
+email varchar(100),
 dia_chi varchar(50),
 ma_vi_tri int,
 ma_trinh_do int,
@@ -55,7 +57,7 @@ dia_chi varchar(50)
 
 create table kieu_thue(
 ma_kieu_thue int primary key,
-ten_kieu_thue varchar(50)bo_phanbo_phan
+ten_kieu_thue varchar(50)
 );
 
 create table loai_dich_vu(
@@ -129,7 +131,8 @@ insert into bo_phan values
 (3,'Phục vụ'),
 (4,'Quản lý');
 
-insert into nhan_vien values (1, 'Nguyễn Văn An', '1970-11-07', '456231786',10000000,'0901234121','annguyen@gmail.com','295 Nguyễn Tất Thành, Đà Nẵng',1,3,1),
+insert into nhan_vien values 
+(1, 'Nguyễn Văn An', '1970-11-07', '456231786',10000000,'0901234121','annguyen@gmail.com','295 Nguyễn Tất Thành, Đà Nẵng',1,3,1),
 (2, 'Lê Văn Bình', '1997-04-09', '654231234',7000000,'0934212314','binhlv@gmail.com','22 Yên Bái, Đà Nẵng',1,2,2),
 (3, 'Hồ Thị Yến', '1995-12-12', '999231723',14000000,'0412352315','thiyen@gmail.com','K234/11 Điện Biên Phủ, Gia Lai',1,3,2),
 (4, 'Võ Công Toản', '1980-04-04', '123231365',17000000,'0374443232','toan0404@gmail.com','77 Hoàng Diệu, Quảng Trị',1,4,4),
@@ -155,20 +158,26 @@ values (1, 'Nguyễn Thị Hào', '1970-11-07', 0,'643431213','0945423362','thih
 (8, 'Nguyễn Thị Hào', '1999-04-08', 0,'965656433','0763212345','haohao99@gmail.com','55 Nguyễn Văn Linh, Kon Tum',3),
 (9, 'Trần Đại Danh', '1989-07-01', 1,'432341235','0643343433','danhhai99@gmail.com','24 Lý Thường Kiệt, Quảng Ngãi',1),
 (10, 'Nguyễn Tâm Đắc', '1989-07-01',1,'344343432','0987654321','dactam@gmail.com','22 Ngô Quyền, Đà Nẵng',2);
+
 insert into loai_dich_vu values (1,'Villa'), (2,'House'), (3,'Room');
+
 insert into kieu_thue values (1,'year'), (2,'month'), (3,'day'), (4,'hour');
+
 insert into dich_vu values (1,'Villa Beach Front',25000,10000000,10,3,1,'vip','Có hồ bơi',500,4),
 (2,'House Princess 01',14000,5000000,7,2,2,'vip','Có thêm bếp nướng',null,3),
 (3,'Room Twin 01',5000,10000000,2,4,3,'normal','Có tivi',null,null),
 (4,'Villa No Beach Front',22000,9000000,8,3,1,'normal','Có hồ bơi',300,3),
 (5,'House Princess 02',10000,4000000,5,3,2,'normal','Có thêm bếp nướng',null,2),
 (6,'Room Twin 02',3000,9000000,2,4,3,'normal','Có tivi',null,null);
+
+
 insert into dich_vu_di_kem values (1,'karaoke',10000,'giờ','tiện nghi, hiện đại'),
 (2,'thuê xe máy',10000,'chiếc','hỏng 1 xe'),
 (3,'thuê xe đạp',20000,'chiếc','tốt'),
 (4,'Buffet buổi sáng',15000,'suất','đầy đủ đồ ăn, tráng miệng'),
 (5,'Buffet buổi trưa',90000,'suất','đầy đủ đồ ăn, tráng miệng'),
 (6,'Buffet buổi tối',16000,'suất','đầy đủ đồ ăn, tráng miệng');
+
 insert into hop_dong values
 (1,'2020-12-08','2020-12-08',0,3,1,3),
 (2,'2020-07-14','2020-07-21',200000,7,3,1),
@@ -183,6 +192,126 @@ insert into hop_dong values
 (11,'2021-04-25','2021-04-25',0,2,2,1),
 (12,'2021-05-25','2021-05-27',0,7,10,1);
 
+
 insert into hop_dong_chi_tiet values (1,2,4,5), (2,2,5,8), (3,2,6,15), (4,3,1,1), (5,3,2,11), (6,1,3,1), (7,1,2,2), (8,12,2,2);
+
+-- task 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
+
+select * from nhan_vien
+where (ho_ten like 'H%' or ho_ten like 'T%' or ho_ten like 'K%') and char_length(ho_ten) <=15;
+
+-- task 3 .	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
+
+select * from khach_hang
+where ROUND(DATEDIFF(CURDATE(), ngay_sinh) / 365, 0) between  18 and 50 and dia_chi like '%Đà Nẵng' or dia_chi like '%Quãng Trị';
+
+-- task 4:
+
+select khach_hang.ma_khach_hang, khach_hang.ho_ten, count(hop_dong.ma_hop_dong) as so_lan_dat_phong from khach_hang
+join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+where khach_hang.ma_loai_khach=1
+group by khach_hang.ma_khach_hang 
+order by so_lan_dat_phong asc;
+
+-- task 5:
+select khach_hang.ma_khach_hang, khach_hang.ho_ten, loai_khach.ten_loai_khach,
+hop_dong.ma_hop_dong,dich_vu.ten_dich_vu,hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc_hop_dong,
+sum(ifnull(dich_vu.chi_phi_thue,0) + ifnull(hop_dong_chi_tiet.so_luong,0) * ifnull(dich_vu_di_kem.gia,0)) as tong_tien from khach_hang
+left join loai_khach on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
+left join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+left join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem =hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong.ma_hop_dong
+order by khach_hang.ma_khach_hang asc;
+
+
+-- task 6:
+
+select dich_vu.ma_dich_vu,dich_vu.ten_dich_vu,dich_vu.dien_tich,dich_vu.chi_phi_thue,loai_dich_vu.ten_loai_dich_vu from dich_vu
+join loai_dich_vu on dich_vu.ma_loai_dich_vu = loai_dich_vu.ma_loai_dich_vu
+join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where dich_vu.ma_dich_vu not in (select hop_dong.ma_dich_vu from hop_dong where month(ngay_lam_hop_dong) between 1 and 3 and year(ngay_lam_hop_dong)=2021)
+-- group by dich_vu.ma_dich_vu
+order by dien_tich desc;
+
+-- task 7:
+select dich_vu.ma_dich_vu,dich_vu.ten_dich_vu,dich_vu.dien_tich,dich_vu.so_nguoi_toi_da,chi_phi_thue,loai_dich_vu.ten_loai_dich_vu from dich_vu
+join loai_dich_vu on dich_vu.ma_loai_dich_vu = loai_dich_vu.ma_loai_dich_vu
+join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where dich_vu.ma_dich_vu in (select hop_dong.ma_dich_vu from hop_dong where year(ngay_lam_hop_dong) =2020)  
+and dich_vu.ma_dich_vu not in (select hop_dong.ma_dich_vu from hop_dong where year(ngay_lam_hop_dong)=2021)
+group by dich_vu.ma_dich_vu;
+
+-- task 8:
+-- cach 1
+select khach_hang.ho_ten from khach_hang
+group by ho_ten;
+
+-- cach 2
+select distinct khach_hang.ho_ten from khach_hang;
+
+-- cach 3
+select khach_hang.ho_ten from khach_hang 
+union
+select khach_hang.ho_ten from khach_hang;
+
+-- task 9:
+
+select month(ngay_lam_hop_dong) as thang, count(ma_khach_hang) as so_khach_dat_phong from hop_dong
+where year(ngay_lam_hop_dong) = 2021
+group by month(ngay_lam_hop_dong)
+order by month(ngay_lam_hop_dong) asc;
+
+-- task 10:
+ select
+ hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc_hop_dong, hop_dong.tien_dat_coc,
+ sum(ifnull(hop_dong_chi_tiet.so_luong,0)) as so_luong_dich_vu_di_kem
+ from hop_dong
+left join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+ group by hop_dong.ma_hop_dong
+ order by hop_dong.ma_hop_dong asc;
+ 
+ -- task 11:
+ 
+ select dich_vu_di_kem.ma_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem from dich_vu_di_kem
+ where dich_vu_di_kem.ma_dich_vu_di_kem 
+ in (select hop_dong_chi_tiet.ma_dich_vu_di_kem from khach_hang 
+ join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+ join hop_dong_chi_tiet on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+ where khach_hang.ma_loai_khach =1 and khach_hang.dia_chi like "%Vinh" or khach_hang.dia_chi like "%Quãng Ngãi");
+ 
+ select dich_vu_di_kem.ma_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem from loai_khach
+inner join khach_hang on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
+inner join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+inner join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+where loai_khach.ma_loai_khach = 1 and (dia_chi like '%Vinh%' or dia_chi like '%Quảng Ngãi%');
+
+-- task 12:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
 
 
