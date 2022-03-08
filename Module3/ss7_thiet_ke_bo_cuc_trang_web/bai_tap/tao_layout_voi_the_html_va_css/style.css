@@ -1,4 +1,9 @@
-*{}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .header{
     margin: 0;
     padding: 0;
@@ -35,7 +40,7 @@
 
 .right{
     position: absolute;
-    left: 85%;
+    /*left: 85%;*/
     height: 400px;
     float: left;
     background-color: grey;
@@ -145,11 +150,6 @@
     width: 100%;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 .header #login{
     float: right;
