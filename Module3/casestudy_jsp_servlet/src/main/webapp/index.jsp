@@ -26,7 +26,7 @@
 </div>
 <!--narbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" href="/index.jsp">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -65,6 +65,7 @@
         </form>
     </div>
 </nav>
+
 <div class="container-fluid px-0">
     <div class="row">
         <div class="col-2 bg-dark" style="height: 500px">
@@ -75,27 +76,29 @@
             <img style="height: 300px; width: 100%"
                  src="https://khachsandanang.info/wp-content/uploads/2015/03/Furama-Resort-Danang-3-750x450.jpg">
 
-
         </div>
 
     </div>
 
 
-    <div id="footer">
 
 
+
+</div>
+
+<div id="footer">
+    <div class="card">
+        <div class="card-footer">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
 </div>
-<div class="card">
-    <div class="card-footer">
-        Featured
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

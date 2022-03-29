@@ -12,12 +12,16 @@
     <title>Edit Form</title>
 </head>
 <body>
+<%--hiển thị tiêu đề của trang--%>
 <center>
     <h1>Employee Management</h1>
     <h2>
         <a href="/employee">List Employee</a>
     </h2>
 </center>
+
+<%--hiển thị form chỉnh sửa--%>
+
 <div>
     <form method="post" action="employee?&action=edit">
         <table>
@@ -60,7 +64,7 @@
             <tr>
                 <th>Employee Email</th>
                 <td>
-                    <input type="text" name="employeeEmail" value="${employee.getEmployeeEmail()}" size="45"/>
+                    <input required maxlength="100" minlength="50" pattern="^/d$" type="text" name="employeeEmail" value="${employee.getEmployeeEmail()}" size="45"/>
                 </td>
             </tr>
             <tr>
@@ -111,5 +115,7 @@
         </table>
     </form>
 </div>
+
+
 </body>
 </html>

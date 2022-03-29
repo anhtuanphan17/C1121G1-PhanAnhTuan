@@ -1,16 +1,18 @@
 package repository.impl;
 
+import com.sun.corba.se.pept.transport.ConnectionCache;
 import model.User;
 import repository.data_connect.BaseRepository;
 import repository.IUserRepository;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 public class UserRepository implements IUserRepository {
-
 
     private static final String INSERT_USERS_SQL = "INSERT INTO users(name,email,country) VALUES(?,?,?);";
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
@@ -19,6 +21,20 @@ public class UserRepository implements IUserRepository {
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
     private static final String SEARCH_BY_COUNTRY = "select * from users where country = ?;";
     private static final String SORT_BY_NAME = "select * from users order by name;";
+    private static final String SQL_INSERT = "INSERT INTO EMPLOYEE (NAME, SALARY, CREATED_DATE) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE EMPLOYEE SET SALARY=? WHERE NAME=?";
+    private static final String SQL_TABLE_CREATE = "CREATE TABLE EMPLOYEE"
+            + "("
+            + " ID serial,"
+            + " NAME varchar(100) NOT NULL,"
+            + " SALARY numeric(15, 2) NOT NULL,"
+            + " CREATED_DATE timestamp,"
+            + " PRIMARY KEY (ID)"
+            + ")";
+
+    private static final String SQL_TABLE_DROP = "DROP TABLE IF EXISTS EMPLOYEE";
+
+
     BaseRepository baseRepository = new BaseRepository();
 
 
@@ -176,7 +192,7 @@ public class UserRepository implements IUserRepository {
     @Override
     public User getUserById(int id) {
         User user = null;
-        String query = "{CALL get_user_by_id}";
+        String query = "{CALL get_user_by_id(?)}";
         Connection connection;
         try {
             connection = baseRepository.getConnection();
@@ -281,6 +297,109 @@ public class UserRepository implements IUserRepository {
 
     }
 
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        Connection connection;
+        try {
+            connection = baseRepository.getConnection();
+
+            Statement statement = connection.createStatement();
+
+            PreparedStatement psInsert = connection.prepareStatement(SQL_INSERT);
+
+            PreparedStatement psUpdate = connection.prepareStatement(SQL_UPDATE);
+
+
+            statement.execute(SQL_TABLE_DROP);
+
+            statement.execute(SQL_TABLE_CREATE);
+
+
+            // Run list of insert commands
+
+            psInsert.setString(1, "Quynh");
+
+            psInsert.setBigDecimal(2, new BigDecimal(10));
+
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+
+            psInsert.execute();
+            psInsert.setString(1, "Ngan");
+
+            psInsert.setBigDecimal(2, new BigDecimal(20));
+
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+
+            psInsert.execute();
+            // Run list of update commands
+            // below line caused error, test transaction
+            // org.postgresql.util.PSQLException: No value specified for parameter 1.
+            psUpdate.setBigDecimal(2, new BigDecimal(999.99));
+            //psUpdate.setBigDecimal(1, new BigDecimal(999.99));
+            psUpdate.setString(2, "Quynh");
+            psUpdate.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<User> getUserList() {
+        List<User> userList = new ArrayList<>();
+        String query = "{CALL get_user_list()}";
+
+        Connection connection;
+        try {
+            connection = baseRepository.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                User user = new User(id, name, email, country);
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    @Override
+    public void edit_user(User user) {
+        String query = "{call edit_user_by_id(?,?,?,?)}";
+        Connection connection;
+        try{
+            connection = baseRepository.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query);
+            callableStatement.setInt(1,user.getId());
+            callableStatement.setString(2,user.getName());
+            callableStatement.setString(3,user.getEmail());
+            callableStatement.setString(4,user.getCountry());
+            callableStatement.executeUpdate();
+            connection.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteUserById(int id){
+        Connection connection ;
+        String query = "{call delete_user(?)}";
+        try {
+            connection = baseRepository.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query);
+            callableStatement.setInt(1,id);
+            callableStatement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
 
 
     private void printSQLException(SQLException ex) {

@@ -12,4 +12,8 @@ public interface IEmployeeService {
     Employee findEmployeeById(Integer employeeId);
 
     void updateEmployee(Employee employee);
+
+    void removeEmployeeById(Integer id);
+
+    List<Employee> searchEmployeeByName(String searchWord);
 }

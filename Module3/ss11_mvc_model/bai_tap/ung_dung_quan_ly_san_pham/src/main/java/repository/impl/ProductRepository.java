@@ -30,5 +30,20 @@ public class ProductRepository implements IProductRepository {
         productMap.put(product.getId(), product);
     }
 
+    @Override
+    public Product findById(int id) {
+        return productMap.get(id);
+    }
+
+    @Override
+    public void update(int id, Product product) {
+         productMap.put(id,product);
+    }
+
+    @Override
+    public void remove(int id) {
+        productMap.remove(id);
+    }
+
 
 }

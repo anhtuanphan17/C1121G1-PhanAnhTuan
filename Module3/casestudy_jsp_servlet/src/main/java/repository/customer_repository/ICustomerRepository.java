@@ -14,4 +14,6 @@ public interface ICustomerRepository {
     void updateCustomer(Customer customer);
 
     void deleteCustomerById(int id);
+
+    List<Customer> searchCustomerByName(String searchWord);
 }

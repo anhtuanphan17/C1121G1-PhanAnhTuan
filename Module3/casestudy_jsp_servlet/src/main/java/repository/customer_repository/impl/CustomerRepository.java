@@ -2,6 +2,10 @@ package repository.customer_repository.impl;
 
 import model.customer.Customer;
 import model.customer.CustomerType;
+import model.employee.Division;
+import model.employee.EducationDegree;
+import model.employee.Employee;
+import model.employee.Position;
 import repository.customer_repository.ICustomerRepository;
 import repository.database_connect.BaseRepository;
 import service.customer_service.impl.CustomerTypeService;
@@ -21,6 +25,8 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE customer_id = ?;";
     private static final String UPDATE_CUSTOMER = "UPDATE customer SET customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=?,customer_type_id=? WHERE customer_id=?;";
     private static final String DELETE_CUSTOMER_BY_ID = "DELETE FROM customer WHERE customer_id = ?;";
+//    private static final String SEARCH_CUSTOMER_BY_NAME = "SELECT * FROM customer WHERE customer_name LIKE concat(\"%\",?,\"%\");";
+    private static final String SEARCH_CUSTOMER_BY_NAME = "SELECT * FROM customer WHERE customer_name LIKE ?;";
 
     public BaseRepository getBaseRepository() {
         return baseRepository;
@@ -49,7 +55,6 @@ public class CustomerRepository implements ICustomerRepository {
                 Customer customer = new Customer(id, name, birthday, gender, idCard, phone, email, address, customerTypeId);
                 System.out.println(customer);
                 customerList.add(customer);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -60,7 +65,6 @@ public class CustomerRepository implements ICustomerRepository {
                 e.printStackTrace();
             }
         }
-
         return customerList;
     }
 
@@ -82,7 +86,6 @@ public class CustomerRepository implements ICustomerRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -138,20 +141,19 @@ public class CustomerRepository implements ICustomerRepository {
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
     public void deleteCustomerById(int id) {
         Connection connection = null;
         try {
-            connection =  baseRepository.getConnection();
+            connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_BY_ID);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -159,6 +161,35 @@ public class CustomerRepository implements ICustomerRepository {
             }
         }
 
+    }
+
+    @Override
+    public List<Customer> searchCustomerByName(String searchWord) {
+        List<Customer> customerList = new ArrayList<>();
+        Connection connection;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMER_BY_NAME);
+            preparedStatement.setString(1,"%"+searchWord+"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("customer_id");
+                String name = resultSet.getString("customer_name");
+                String birthday = resultSet.getString("customer_birthday");
+                Integer gender = resultSet.getInt("customer_gender");
+                String idCard = resultSet.getString("customer_id_card");
+                String phone = resultSet.getString("customer_phone");
+                String email = resultSet.getString("customer_email");
+                String address = resultSet.getString("customer_address");
+                CustomerType customerType = customerTypeService.selectCustomerType(resultSet.getInt("customer_type_id"));
+                Customer customer = new Customer(id, name, birthday, gender, idCard, phone, email, address, customerType);
+                customerList.add(customer);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customerList;
     }
 
 }

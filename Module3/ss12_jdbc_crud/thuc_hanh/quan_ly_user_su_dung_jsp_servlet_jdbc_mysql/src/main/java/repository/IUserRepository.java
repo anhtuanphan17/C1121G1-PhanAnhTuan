@@ -26,4 +26,13 @@ public interface IUserRepository {
 
     void addUserTransaction(User user, int[] permision);
 
+    public void insertUpdateWithoutTransaction();
+
+
+    public List<User> getUserList();
+
+    public void edit_user(User user);
+
+
+    void deleteUserById(int id);
 }

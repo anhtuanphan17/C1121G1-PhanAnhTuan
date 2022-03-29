@@ -29,4 +29,14 @@ public class EmployeeService implements IEmployeeService {
     public void updateEmployee(Employee employee) {
         employeeRepository.updateEmployee(employee);
     }
+
+    @Override
+    public void removeEmployeeById(Integer id) {
+        employeeRepository.removeEmployeeById(id);
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String searchWord) {
+        return employeeRepository.searchEmployeeByName(searchWord);
+    }
 }

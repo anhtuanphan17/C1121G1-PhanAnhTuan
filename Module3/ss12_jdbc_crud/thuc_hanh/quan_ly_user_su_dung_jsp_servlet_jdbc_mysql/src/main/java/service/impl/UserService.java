@@ -58,7 +58,27 @@ public class UserService implements IUserService {
 
     @Override
     public void addUserTransaction(User user, int[] permisions) {
-    iUserRepository.addUserTransaction(user,permisions);
+        iUserRepository.addUserTransaction(user, permisions);
+    }
+
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        iUserRepository.insertUpdateWithoutTransaction();
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return iUserRepository.getUserList();
+    }
+
+    @Override
+    public void edit_user(User user) {
+    iUserRepository.edit_user(user);
+    }
+
+    @Override
+    public void deleteUserById(int id) {
+        iUserRepository.deleteUserById(id);
     }
 
 }

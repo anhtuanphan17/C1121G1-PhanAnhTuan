@@ -29,6 +29,7 @@
     <td><c:out value="${user.getCountry()}"/></td>
     </tr>
     </c:forEach>
+</table>
 
 </body>
 </html>

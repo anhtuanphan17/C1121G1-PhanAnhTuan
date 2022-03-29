@@ -35,5 +35,10 @@ public class CustomerService implements ICustomerService {
         customerRepository.deleteCustomerById(id);
     }
 
+    @Override
+    public List<Customer> searchCustomerByName(String searchWord) {
+        return customerRepository.searchCustomerByName(searchWord);
+    }
+
 
 }

@@ -2,6 +2,7 @@ package controller;
 
 import model.customer.Customer;
 import model.customer.CustomerType;
+import model.employee.Employee;
 import service.customer_service.ICustomerService;
 import service.customer_service.ICustomerTypeService;
 import service.customer_service.impl.CustomerService;
@@ -63,7 +64,7 @@ public class CustomerServlet extends HttpServlet {
                     editCustomer(request, response);
                     break;
                 case "search":
-//                    searchById(request, response);
+                    searchByName(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -166,6 +167,22 @@ public class CustomerServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    private void searchByName(HttpServletRequest request, HttpServletResponse response) {
+        String searchWord = request.getParameter("searchWord");
+        List<Customer> customerList = customerService.searchCustomerByName(searchWord);
+        request.setAttribute("customerList",customerList);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("customer/list.jsp");
+
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

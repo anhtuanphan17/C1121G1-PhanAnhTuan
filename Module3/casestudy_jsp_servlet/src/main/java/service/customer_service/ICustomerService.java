@@ -16,4 +16,6 @@ public interface ICustomerService {
     void updateCustomer(Customer customer);
 
     void removeCustomerById(int id);
+
+    List<Customer> searchCustomerByName(String searchWord);
 }
