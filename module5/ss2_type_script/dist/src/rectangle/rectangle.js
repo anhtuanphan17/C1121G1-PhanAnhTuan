@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rectangle = void 0;
-const shape_1 = require("./shape");
-class Rectangle extends shape_1.Shape {
+const Shape_1 = require("./Shape");
+class Rectangle extends Shape_1.Shape {
     constructor(x, y, _width, _height) {
         super(x, y);
         this._width = _width;
@@ -25,4 +25,4 @@ class Rectangle extends shape_1.Shape {
     }
 }
 exports.Rectangle = Rectangle;
-//# sourceMappingURL=rectangle.js.map
+//# sourceMappingURL=Rectangle.js.map

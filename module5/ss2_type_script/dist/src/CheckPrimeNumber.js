@@ -13,4 +13,12 @@ function isPrime(number) {
     }
     return isPrime;
 }
+let array = [1, 5, 9, 2, 6, 15, 19, 35, 51, 53];
+let sum1 = 0;
+for (let number of array) {
+    if (isPrime(number)) {
+        sum1 += number;
+    }
+}
+console.log("Tổng các số nguyên tố trong mảng trên là: " + sum1);
 //# sourceMappingURL=CheckPrimeNumber.js.map

@@ -1,4 +1,4 @@
-import { Shape } from "./shape";
+import { Shape } from "./Shape";
 export declare class Rectangle extends Shape implements IArea {
     private _width;
     private _height;
