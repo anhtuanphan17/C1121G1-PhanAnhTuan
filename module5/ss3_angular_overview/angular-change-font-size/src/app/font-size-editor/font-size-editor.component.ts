@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./font-size-editor.component.css']
 })
 export class FontSizeEditorComponent implements OnInit {
-  fontSize = 18;
+  fontSize?: 18;
   constructor() { }
 
   ngOnInit(): void {
