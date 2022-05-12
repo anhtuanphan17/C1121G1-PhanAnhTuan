@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IFacility} from '../../../model/IFacility';
+import {IFacility} from '../../model/IFacility';
 
 @Component({
   selector: 'app-service-list',
