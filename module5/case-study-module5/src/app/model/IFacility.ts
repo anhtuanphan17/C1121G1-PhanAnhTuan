@@ -1,15 +1,15 @@
 export interface IFacility {
-  id?: number;
-  serviceCode?: string;
-  name?: string;
-  area?: string;
-  price?: string;
-  maxPeople?: string;
-  standardRoom?: string;
-  otherConvenience?: string;
-  poolArea?: string;
-  floor?: string;
-  rentType?: string;
-  serviceType?: string;
-  image?: string;
+  serviceId: number;
+  serviceCode: string;
+  serviceName: string;
+  serviceArea: number;
+  serviceCost: number;
+  serviceMaxPeople: number;
+  standardRoom: string;
+  descriptionOtherConvenience: string;
+  poolArea: number;
+  numberOfFloors: number;
+  rentType: number;
+  serviceType: number;
+  serviceImage: string;
 }

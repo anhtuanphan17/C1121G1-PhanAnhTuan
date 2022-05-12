@@ -1,68 +1,36 @@
-<div class="container"></div>
-<div class="row">
-  <div class="card col-3 ">
-    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-      <img
-        src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-        class="img-fluid"/>
-      <a href="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">OCEAN SUITE</h5>
-      <p class="card-text">Room size: 40.1 m2
-      </p>
-      <a href="#!" class="btn btn-primary">Button</a>
-    </div>
-  </div>
+<section class="text-center mb-4 container" style="margin-top: 30px">
+  <div class="row wow fadeIn">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let facility of facilities">
+      <div class="card">
 
-  <div class="card col-3 ">
-    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-      <img
-        src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Garden-Superior-TwinBed-1-F-370x239.jpg"
-        class="img-fluid"/>
-      <a href="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">OCEAN STUDIO SUITE</h5>
-      <p class="card-text">Room size: 40.1 m2
-      </p>
-      <a href="#!" class="btn btn-primary">Button</a>
-    </div>
-  </div>
+        <div class="view overlay">
+          <img
+            src="{{facility.serviceImage}}"
+            class="card-img-top" alt="">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body text-center">
+          <a href="" class="grey-text">
+            <h5>{{facility.serviceName}}</h5>
+          </a>
+          <h5>
+            <strong>
+              <small>Area: {{facility.serviceArea}} m<sup>2</sup></small>
+            </strong>
+          </h5>
 
-  <div class="card col-3 ">
-    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-      <img src="https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-F-370x239.jpg"
-           class="img-fluid"/>
-      <a href="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">OCEAN DELUXE</h5>
-      <p class="card-text">Room size: 40.1 m2
-      </p>
-      <a href="#!" class="btn btn-primary">Button</a>
+          <h4 class="blue-text">
+            <strong>{{facility.serviceCost}}$</strong>
+          </h4>
+          <br>
+          <h3 class="table-remove">
+            <a href="#" type="button" class="btn btn-primary btn-rounded btn-sm my-0">Detail</a>
+          </h3>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card col-3 ">
-    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-      <img
-        src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-        class="img-fluid"/>
-      <a href="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">LAGOON SUPERIOR</h5>
-      <p class="card-text">Room size: 40.1 m2
-      </p>
-      <a href="#!" class="btn btn-primary">Button</a>
-    </div>
-  </div>
-</div>
+</section>
+

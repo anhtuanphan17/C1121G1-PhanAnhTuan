@@ -8,9 +8,9 @@ import { NavigataionComponent } from './navigataion/navigataion.component';
 import { ServiceListComponent } from './contract-component/service-component/service-list/service-list.component';
 import { SerivceEditComponent } from './contract-component/service-component/serivce-edit/serivce-edit.component';
 import { ServiceCreateComponent } from './contract-component/service-component/service-create/service-create.component';
-import { CustomerListComponent } from './customer-list/customer-list.component';
-import { CustomerEditComponent } from './customer-edit/customer-edit.component';
-import { CustomerCreateComponent } from './customer-create/customer-create.component';
+import { CustomerListComponent } from './customer-component/customer-list/customer-list.component';
+import { CustomerEditComponent } from './customer-component/customer-edit/customer-edit.component';
+import { CustomerCreateComponent } from './customer-component/customer-create/customer-create.component';
 import { ContractListComponent } from './contract-component/contract-list/contract-list.component';
 import { ContractCreateComponent } from './contract-component/contract-create/contract-create.component';
 
