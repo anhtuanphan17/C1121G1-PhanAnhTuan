@@ -45,7 +45,7 @@ export class ContractListComponent implements OnInit {
         serviceCost: 1000000,
         serviceMaxPeople: 2,
         standardRoom: 'normal',
-        descriptionOtherConvenience: 'Có tivi',
+        descriptionOtherConvenience: 'Gym Room',
         poolArea: 0,
         numberOfFloors: 0,
         rentType: 1,
@@ -61,23 +61,14 @@ export class ContractListComponent implements OnInit {
       employeeId: 7,
       customer: {
         customerId: 3,
-
         customerCode: 'KH-0003',
-
         customerName: 'Trương Đình Nghệ',
-
         customerBirthday: '1990-02-27',
-
         customerGender: '1',
-
         customerIdCard: '488645199',
-
         customerPhone: '0373213122',
-
         customerEmail: 'nghenhan2702@gmail.com',
-
         customerAddress: 'K323/12 Ông Ích Khiêm, Vinh',
-
         customerTypeId: 3,
       },
       services: {
@@ -89,7 +80,7 @@ export class ContractListComponent implements OnInit {
         serviceCost: 10000000,
         serviceMaxPeople: 10,
         standardRoom: 'vip',
-        descriptionOtherConvenience: 'Có hồ bơi',
+        descriptionOtherConvenience: 'Public pool',
         poolArea: 500,
         numberOfFloors: 4,
         rentType: 2,
@@ -133,7 +124,7 @@ export class ContractListComponent implements OnInit {
         serviceCost: 5000000,
         serviceMaxPeople: 7,
         standardRoom: 'vip',
-        descriptionOtherConvenience: 'Có thêm bếp nướng',
+        descriptionOtherConvenience: 'sauna room',
         poolArea: 0,
         numberOfFloors: 3,
         rentType: 3,
