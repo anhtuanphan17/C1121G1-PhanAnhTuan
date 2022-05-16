@@ -1,7 +1,9 @@
 <div class="mx-auto w-75 mt-5">
+  <a [routerLink]="['']">customer list</a>
   <h2>Create Customer Form</h2>
   <form [formGroup]="customerCreateForm" (ngSubmit)="submitCustomerCreateForm()" class="row g-3">
     <div class="col-md-6">
+      <input type="hidden" formControlName="id">
       <label for="customerCode" class="form-label">Customer Code</label>
       <input formControlName="customerCode" type="text" class="form-control" name="customerCode" id="customerCode">
       <div
@@ -23,6 +25,7 @@
           input customer name</small>
       </div>
     </div>
+
     <div class="col-md-6">
       <label for="customerBirthday" class="form-label">Customer Birthday</label>
       <input formControlName="customerBirthday" type="date" class="form-control" id="customerBirthday">
@@ -33,6 +36,7 @@
           style="color: red">Please choose a date!</small>
       </div>
     </div>
+
     <div class="col-md-6">
       <label for="customerIdCard" class="form-label">Custiomer ID Card</label>
       <input formControlName="customerIdCard" type="text" class="form-control" id="customerIdCard">
@@ -48,6 +52,7 @@
         </small>
       </div>
     </div>
+
     <div class="col-md-6">
       <label for="customerPhone" class="form-label">Customer Phone</label>
       <input formControlName="customerPhone" type="text" class="form-control" id="customerPhone">
@@ -63,6 +68,7 @@
         </small>
       </div>
     </div>
+
     <div class="col-md-6">
       <label class="form-label">Customer Gender</label>
       <select formControlName="customerGender" name="customerGender" class="form-select">
@@ -94,7 +100,6 @@
           style="color: red">please input address</small>
       </div>
     </div>
-
 
     <div class="col-md-6">
       <label for="customerType" class="form-label">Customer type</label>

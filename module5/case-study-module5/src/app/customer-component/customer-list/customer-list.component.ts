@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ICustomer} from '../../model/ICustomer';
+import {CustomerService} from '../../service/customer.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
@@ -9,49 +10,21 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class CustomerListComponent implements OnInit {
   check = false;
-   deleteCustomer: ICustomer;
+  deleteCustomer: ICustomer;
+  customers: ICustomer[] = [];
 
-  customers: ICustomer[] = [
-    {
-      customerId: 1,
-      customerCode: 'KH-001',
-      customerName: 'Anh Tuan',
-      customerBirthday: '1995-12-17',
-      customerGender: '1',
-      customerIdCard: '214101101',
-      customerPhone: '0954333333',
-      customerEmail: 'tuanphan@gmail.com',
-      customerAddress: 'DakLak',
-      customerTypeId: 2,
-    },
-    {
-      customerId: 2,
-
-      customerCode: 'KH-0002',
-
-      customerName: 'Phạm Xuân Diệu',
-
-      customerBirthday: '1992-08-08',
-
-      customerGender: '1',
-
-      customerIdCard: '865342123',
-
-      customerPhone: '0954333333',
-
-      customerEmail: 'xuandieu92@gmail.com',
-
-      customerAddress: 'K77/22 Thái Phiên, Quảng Trị',
-
-      customerTypeId: 3,
-    },
-  ];
-
-
-  constructor() {
+  constructor(private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
+    this.findAllCustomer();
+  }
+
+  findAllCustomer() {
+    this.customerService.getAllCustomer().subscribe((customers) => {
+      this.customers = customers;
+      console.log(this.customers);
+    });
   }
 
   onOpenEditModal(a: ICustomer): void {
@@ -68,14 +41,13 @@ export class CustomerListComponent implements OnInit {
     button.click();
   }
 
-  // delete(closeModal: HTMLButtonElement) {
-  //   this.customerService.deleteCustomer(this.deleteCustomer).subscribe((res: void) => {
-  //     closeModal.click();
-  //     this.ngOnInit();
-  //
-  //   }, (error: HttpErrorResponse) => {
-  //     alert('sai rồi');
-  //   });
-  // }
+  delete(event) {
+    this.customerService.deleteCustomer(this.deleteCustomer).subscribe(() => {
+      event.click();
+      this.ngOnInit();
+    }, (error: HttpErrorResponse) => {
+      alert('error');
+    });
+  }
 
 }

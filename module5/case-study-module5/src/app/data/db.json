@@ -1,0 +1,28 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "customerCode": "KH-001",
+      "customerName": "Anh Tuan",
+      "customerBirthday": "1995-12-17",
+      "customerGender": "1",
+      "customerIdCard": "214101101",
+      "customerPhone": "0954333333",
+      "customerEmail": "tuanphan@gmail.com",
+      "customerAddress": "DakLak",
+      "customerTypeId": "2"
+    },
+    {
+      "id": 2,
+      "customerCode": "KH-002",
+      "customerName": "Dang Khoa",
+      "customerBirthday": "2002-12-17",
+      "customerGender": "0",
+      "customerIdCard": "214101101",
+      "customerPhone": "0954333333",
+      "customerEmail": "khoapham@gmail.com",
+      "customerAddress": "Da Nang",
+      "customerTypeId": "1"
+    }
+  ]
+}

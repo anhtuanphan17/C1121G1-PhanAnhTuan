@@ -1,0 +1,68 @@
+{
+  "productList": [
+    {
+      "name": "Apple",
+      "category": {
+        "id": 2,
+        "categoryName": "Fruits"
+      },
+      "price": "5",
+      "date": "2022-05-13T17:00:00.000Z",
+      "id": 1
+    },
+    {
+      "name": "Mango",
+      "category": {
+        "id": 2,
+        "categoryName": "Fruits"
+      },
+      "price": "2",
+      "date": "2022-05-12T17:00:00.000Z",
+      "id": 2
+    },
+    {
+      "name": "Avocado",
+      "category": {
+        "id": 2,
+        "categoryName": "Fruits"
+      },
+      "price": "15",
+      "date": "2022-05-14T17:00:00.000Z",
+      "id": 3
+    },
+    {
+      "name": "iPhone 12 PRO MAX",
+      "category": {
+        "id": 1,
+        "categoryName": "Electronic"
+      },
+      "price": "1000",
+      "date": "2022-05-07T17:00:00.000Z",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "444",
+      "price": 444,
+      "date": "444",
+      "category": {
+        "id": 1,
+        "categoryName": "Electric"
+      }
+    }
+  ],
+  "category": [
+    {
+      "categoryName": "Electric",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "categoryName": "Fruits"
+    },
+    {
+      "id": 3,
+      "categoryName": "Air Conditioner"
+    }
+  ]
+}

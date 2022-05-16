@@ -1,3 +1,4 @@
+<a [routerLink]="['/customer/create']">create</a>
 <div class="container" id="main-container">
   <table class="table table-hover">
     <thead>
@@ -34,7 +35,7 @@
         <span *ngSwitchCase="4">Silver</span>
         <span *ngSwitchCase="4">Member</span>
       </td>
-      <td>Edit</td>
+      <td><a [routerLink]="['/customer/edit/',customer.id]">Edit</a></td>
       <td><a (click)="onOpenEditModal(customer)" style="color: darkviolet">delete</a></td>
       <!--      <i class="fa fa-edit"></i>-->
       <!--      <i class="fa fa-delete"></i>-->
@@ -80,7 +81,7 @@
         </div>
         <div class="modal-footer">
           <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<!--          <button (click)="delete(closeModal)" type="button" class="btn btn-primary" id="delete_customer_id">ok</button>-->
+          <button (click)="delete(closeModal)" type="button" class="btn btn-primary" id="delete_customer_id">ok</button>
         </div>
       </div>
     </div>
