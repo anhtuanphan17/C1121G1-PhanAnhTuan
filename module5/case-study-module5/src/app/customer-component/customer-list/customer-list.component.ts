@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ICustomer} from "../../model/ICustomer";
+import {Component, OnInit} from '@angular/core';
+import {ICustomer} from '../../model/ICustomer';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,7 +8,10 @@ import {ICustomer} from "../../model/ICustomer";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  customers: ICustomer[] =[
+  check = false;
+   deleteCustomer: ICustomer;
+
+  customers: ICustomer[] = [
     {
       customerId: 1,
       customerCode: 'KH-001',
@@ -42,9 +46,36 @@ export class CustomerListComponent implements OnInit {
       customerTypeId: 3,
     },
   ];
-  constructor() { }
+
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
+  onOpenEditModal(a: ICustomer): void {
+    console.log('haha');
+    this.deleteCustomer = a;
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#deleteModal');
+    container.appendChild(button);
+    this.check = true;
+    button.click();
+  }
+
+  // delete(closeModal: HTMLButtonElement) {
+  //   this.customerService.deleteCustomer(this.deleteCustomer).subscribe((res: void) => {
+  //     closeModal.click();
+  //     this.ngOnInit();
+  //
+  //   }, (error: HttpErrorResponse) => {
+  //     alert('sai rồi');
+  //   });
+  // }
 
 }

@@ -1,0 +1,40 @@
+{
+  "category": [
+    {
+      "categoryName": "Phonee111111",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "categoryName": "Tivi"
+    },
+    {
+      "id": 3,
+      "categoryName": "Air Conditioner"
+    },
+    {
+      "categoryName": "refrigerator",
+      "id": 4
+    },
+    {
+      "categoryName": "Smart TV",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "categoryName": "qewqe"
+    },
+    {
+      "id": 7,
+      "categoryName": "qweqe"
+    },
+    {
+      "id": 8,
+      "categoryName": "asdad"
+    },
+    {
+      "id": 10,
+      "categoryName": "Tuan Ngoc"
+    }
+  ]
+}

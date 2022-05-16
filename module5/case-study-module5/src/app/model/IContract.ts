@@ -1,5 +1,6 @@
-import {ICustomer} from "./ICustomer";
-import {IFacility} from "./IFacility";
+import {ICustomer} from './ICustomer';
+import {IFacility} from './IFacility';
+import {IEmployee} from './IEmployee';
 
 
 export interface IContract {
@@ -8,7 +9,7 @@ export interface IContract {
   contractEndDate: string;
   contractDeposit: number;
   contractTotalMoney: number;
-  employeeId: number;
+  employee: IEmployee;
   customer: ICustomer;
   services: IFacility;
 }

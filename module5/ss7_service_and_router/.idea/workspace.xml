@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba79f7ec-016b-4312-b907-756897c44eef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../case-study-module5/src/app/model/gte.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss9_connect_backend/practice/product_management/src/main/java/com/example/product_management/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss9_connect_backend/practice/product_management/src/main/java/com/example/product_management/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss9_connect_backend/practice/product_management/src/main/java/com/example/product_management/repository/ICategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss9_connect_backend/practice/product_management/src/main/java/com/example/product_management/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss9_connect_backend/practice/product_management/src/main/java/com/example/product_management/service/ICategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.idea/CODEGYM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/CODEGYM.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/bao cao/[C1121G1]_Bao cao tuan 1_Phan_Anh _Tuan_  -ngay30 -12-2021.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/bao cao/[C1121G1]_Bao cao tuan 1_Phan_Anh _Tuan_  -ngay30 -12-2021.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/data/customer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/data/customer.csv" afterDir="false" />
@@ -65,6 +71,18 @@
       <change beforePath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/java/com/example/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/java/com/example/AppInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/java/com/example/controller/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/java/com/example/controller/GreetingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/webapp/WEB-INF/views/greeting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/ss1_tong_quan_spring_mvc/thuc_hanh/tao_ung_dung_spring-greeting/src/main/webapp/WEB-INF/views/greeting.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-create/contract-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-create/contract-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-create/contract-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-create/contract-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-list/contract-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/contract-component/contract-list/contract-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/customer-component/customer-edit/customer-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/customer-component/customer-edit/customer-edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/model/IContract.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/model/IContract.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/navigataion/navigataion.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/navigataion/navigataion.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/serivce-edit/serivce-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/serivce-edit/serivce-edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/serivce-edit/serivce-edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/serivce-edit/serivce-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/service-create/service-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/service-create/service-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/service-create/service-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/src/app/service-component/service-create/service-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case-study-module5/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/../case-study-module5/tslint.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ss10_cau_truc_lap/thuc_hanh/SuDungVongLap.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ss10_cau_truc_lap/thuc_hanh/SuDungVongLapBai2.html" beforeDir="false" />
@@ -259,7 +277,10 @@
       <workItem from="1652436410966" duration="14003000" />
       <workItem from="1652451744015" duration="79000" />
       <workItem from="1652451913908" duration="1496000" />
-      <workItem from="1652510370312" duration="9786000" />
+      <workItem from="1652510370312" duration="10566000" />
+      <workItem from="1652535066905" duration="256000" />
+      <workItem from="1652598120025" duration="1077000" />
+      <workItem from="1652606987169" duration="3382000" />
     </task>
     <servers />
   </component>
@@ -271,10 +292,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1652443573530" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1652451482538">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1652599196058">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1652451482538" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1652599196058" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1652437169805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
