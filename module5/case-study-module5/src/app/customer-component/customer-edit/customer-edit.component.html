@@ -88,15 +88,16 @@
       </div>
     </div>
 
-    <div class="col-md-12">
-      <label for="customerAddress" class="form-label">Customer Address</label>
-      <input formControlName="customerAddress" type="text" class="form-control" id="customerAddress">
+    <div class="col-md-6">
+
+      <label class="form-label" for="email">Email:</label>
+      <input id="email" type="text" class="form-control" formControlName="customerEmail">
       <div
-        *ngIf="customerEditForm.controls.customerAddress.invalid && (customerEditForm.controls.customerAddress.dirty
-         || customerEditForm.controls.customerAddress.touched) || customerEditForm.controls.customerAddress.errors?.empty">
-        <small
-          *ngIf="customerEditForm.controls.customerAddress.errors?.required || customerEditForm.controls.customerAddress.errors?.empty"
-          style="color: red">please input address</small>
+        *ngIf="customerEditForm.controls.customerEmail.invalid && (customerEditForm.controls.customerEmail.dirty || customerEditForm.controls.customerEmail.touched) || customerEditForm.controls.customerEmail.errors?.empty">
+        <span *ngIf="customerEditForm.controls.customerEmail.errors.email" style="color: red">Wrong format, ex: abc@gmail.com</span>
+        <span
+          *ngIf="customerEditForm.controls.customerEmail.errors.required || customerEditForm.controls.customerEmail.errors.empty"
+          style="color: red">Empty! Input please!</span>
       </div>
     </div>
 
@@ -116,6 +117,18 @@
         <small
           *ngIf="customerEditForm.controls.customerTypeId.errors?.required || customerEditForm.controls.customerTypeId.errors?.empty"
           style="color: red">please choose customer type</small>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label for="customerAddress" class="form-label">Customer Address</label>
+      <input formControlName="customerAddress" type="text" class="form-control" id="customerAddress">
+      <div
+        *ngIf="customerEditForm.controls.customerAddress.invalid && (customerEditForm.controls.customerAddress.dirty
+         || customerEditForm.controls.customerAddress.touched) || customerEditForm.controls.customerAddress.errors?.empty">
+        <small
+          *ngIf="customerEditForm.controls.customerAddress.errors?.required || customerEditForm.controls.customerAddress.errors?.empty"
+          style="color: red">please input address</small>
       </div>
     </div>
 

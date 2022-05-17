@@ -26,6 +26,7 @@
       </div>
     </div>
 
+
     <div class="col-md-6">
       <label for="customerBirthday" class="form-label">Customer Birthday</label>
       <input formControlName="customerBirthday" type="date" class="form-control" id="customerBirthday">
@@ -89,17 +90,8 @@
       </div>
     </div>
 
-    <div class="col-md-12">
-      <label for="customerAddress" class="form-label">Customer Address</label>
-      <input formControlName="customerAddress" type="text" class="form-control" id="customerAddress">
-      <div
-        *ngIf="customerCreateForm.controls.customerAddress.invalid && (customerCreateForm.controls.customerAddress.dirty
-         || customerCreateForm.controls.customerAddress.touched) || customerCreateForm.controls.customerAddress.errors?.empty">
-        <small
-          *ngIf="customerCreateForm.controls.customerAddress.errors?.required || customerCreateForm.controls.customerAddress.errors?.empty"
-          style="color: red">please input address</small>
-      </div>
-    </div>
+
+
 
     <div class="col-md-6">
       <label for="customerType" class="form-label">Customer type</label>
@@ -118,8 +110,21 @@
       </div>
     </div>
 
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary btn-block mb-4" style="text-align: center ">Create</button>
+    <div class="col-md-12">
+      <label for="customerAddress" class="form-label">Customer Address</label>
+      <input formControlName="customerAddress" type="text" class="form-control" id="customerAddress">
+      <div
+        *ngIf="customerCreateForm.controls.customerAddress.invalid && (customerCreateForm.controls.customerAddress.dirty
+         || customerCreateForm.controls.customerAddress.touched) || customerCreateForm.controls.customerAddress.errors?.empty">
+        <small
+          *ngIf="customerCreateForm.controls.customerAddress.errors?.required || customerCreateForm.controls.customerAddress.errors?.empty"
+          style="color: red">please input address</small>
+      </div>
+    </div>
+
+
+    <div class="col-12"  style="display: flex; justify-content: center" >
+      <button type="submit" class="btn btn-primary btn-block mb-4"  >Create</button>
     </div>
   </form>
 </div>
