@@ -6,8 +6,8 @@
       "price": 444,
       "date": "444",
       "category": {
-        "id": 1,
-        "categoryName": "Electric"
+        "id": 2,
+        "categoryName": "Fruits"
       }
     },
     {

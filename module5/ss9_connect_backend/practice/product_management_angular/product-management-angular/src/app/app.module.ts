@@ -7,25 +7,20 @@ import { HttpClientModule} from '@angular/common/http';
 import { CategoryCreateComponent } from './category-component/category-create/category-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CategoryEditComponent } from './category-component/category-edit/category-edit.component';
-import { ProductComponentComponent } from './product/product-component/product-component.component';
-import { ProductCreateComponent } from './product/product-create/product-create.component';
-import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import {SharedModule} from "./shared/shared.module";
+import {ProductModule} from "./product/product.module";
+import {CategoryModule} from "./category-component/category.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
-    CategoryCreateComponent,
-    CategoryEditComponent,
-    ProductComponentComponent,
-    ProductCreateComponent,
-    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    SharedModule,
+    ProductModule,
+    CategoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
