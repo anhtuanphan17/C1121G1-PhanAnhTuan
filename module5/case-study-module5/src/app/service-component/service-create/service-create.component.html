@@ -1,66 +1,4 @@
-<!--<div class="mx-auto w-75 mt-5">-->
-<!--  <h2>Create Service Form</h2>-->
-<!--  <form class="row g-3">-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputEmail4" class="form-label">Service Code</label>-->
-<!--      <input type="email" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputPassword4" class="form-label">Service name</label>-->
-<!--      <input type="password" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputEmail4" class="form-label">Service area</label>-->
-<!--      <input type="email" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputPassword4" class="form-label">Service cost</label>-->
-<!--      <input type="password" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputEmail4" class="form-label">Service max people</label>-->
-<!--      <input type="email" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputPassword4" class="form-label">Standard room</label>-->
-<!--      <input type="password" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputEmail4" class="form-label">Pool area</label>-->
-<!--      <input type="email" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputPassword4" class="form-label">Number of floors</label>-->
-<!--      <input type="password" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--    <div class="col-12">-->
-<!--      <label for="inputAddress" class="form-label">Description other convenience</label>-->
-<!--      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">-->
-<!--    </div>-->
-
-
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputState" class="form-label">Rent type</label>-->
-<!--      <select id="inputState" class="form-select">-->
-<!--        <option selected>Choose...</option>-->
-<!--        <option>...</option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--      <label for="inputState" class="form-label">Service type</label>-->
-<!--      <select id="inputState" class="form-select">-->
-<!--        <option selected>Choose...</option>-->
-<!--        <option>...</option>-->
-<!--      </select>-->
-<!--    </div>-->
-
-<!--    <div class="col-12">-->
-<!--      <button type="submit" class="btn btn-primary btn-block mb-4" style="text-align: center ">Create</button>-->
-<!--    </div>-->
-
-<!--  </form>-->
-<!--</div>-->
-
+<app-navigataion></app-navigataion>
 
 <div style="display: flex; justify-content: center; margin-top: 30px">
   <select name="serviceType" id="createSelection" class="form-control mb-3" style="width: 550px;"
@@ -83,7 +21,7 @@
         <form id="createFormVilla" method="POST" [formGroup]="createServiceForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="serviceCodeCreateVilla">Service code</label>
-            <input type="text" class="form-control" placeholder="Type new service code here"
+            <input type="text" class="form-control"
                    id="serviceCodeCreateVilla" formControlName="serviceCode">
             <div
               *ngIf="serviceCode.invalid && (serviceCode.dirty || serviceCode.touched) || serviceCode.errors?.empty">
@@ -95,7 +33,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceNameCreateVilla">Service name</label>
-                <input type="text" class="form-control" placeholder="Type new service name here"
+                <input type="text" class="form-control"
                        id="serviceNameCreateVilla" formControlName="serviceName">
                 <div
                   *ngIf="serviceName.invalid && (serviceName.dirty || serviceName.touched) || serviceName.errors?.empty">
@@ -107,7 +45,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceAreaCreateVilla">Services area (m²)</label>
-                <input type="text" class="form-control" placeholder="Type new services area here"
+                <input type="text" class="form-control"
                        id="serviceAreaCreateVilla" formControlName="serviceArea">
                 <div
                   *ngIf="serviceArea.invalid && (serviceArea.dirty || serviceArea.touched) || serviceArea.errors?.empty">
@@ -123,7 +61,7 @@
               <div class="form-group">
                 <label for="serviceCostCreateVilla">Service cost:</label>
                 <input type="text" class="form-control" id="serviceCostCreateVilla"
-                       placeholder="Type new services cost here" formControlName="serviceCost">
+                        formControlName="serviceCost">
                 <div
                   *ngIf="serviceCost.invalid && (serviceCost.dirty || serviceCost.touched) || serviceCost.errors?.empty">
                                       <span *ngIf="serviceCost.errors?.gte"
@@ -136,7 +74,7 @@
               <div class="form-group">
                 <label for="serviceMaxPeopleCreateVilla">Service max people:</label>
                 <input type="text" class="form-control" id="serviceMaxPeopleCreateVilla"
-                       placeholder="Type new services max people here" formControlName="serviceMaxPeople">
+                       formControlName="serviceMaxPeople">
                 <div
                   *ngIf="serviceMaxPeople.invalid && (serviceMaxPeople.dirty || serviceMaxPeople.touched) || serviceMaxPeople.errors?.empty">
                                       <span *ngIf="serviceMaxPeople.errors?.gte"
@@ -172,7 +110,7 @@
               <div class="form-group">
                 <label for="standardRoomCreateVilla">Standard room: </label>
                 <input type="text" class="form-control" id="standardRoomCreateVilla"
-                       placeholder="Type new standard room" formControlName="standardRoom">
+                        formControlName="standardRoom">
                 <div
                   *ngIf="standardRoom.invalid && (standardRoom.dirty || standardRoom.touched) || standardRoom.errors?.empty">
                   <span *ngIf="standardRoom.errors.required || standardRoom.errors.empty" style="color: red">Empty! Input please!</span>
@@ -184,7 +122,6 @@
                 <label for="descriptionOtherConvenienceCreateVilla">Description other
                   convenience:</label>
                 <input type="text" class="form-control" id="descriptionOtherConvenienceCreateVilla"
-                       placeholder="Type new description other convenience"
                        formControlName="descriptionOtherConvenience">
                 <div
                   *ngIf="descriptionOtherConvenience.invalid && (descriptionOtherConvenience.dirty || descriptionOtherConvenience.touched) || descriptionOtherConvenience.errors?.empty">
@@ -202,7 +139,7 @@
               <div class="form-group">
                 <label for="poolAreaCreateVilla">Pool area:</label>
                 <input type="text" class="form-control" id="poolAreaCreateVilla"
-                       placeholder="Type new description other convenience" formControlName="poolArea">
+                      formControlName="poolArea">
                 <div *ngIf="poolArea.invalid && (poolArea.dirty || poolArea.touched || poolArea.errors?.empty)">
                   <span *ngIf="poolArea.errors?.gte" style="color: red">{{poolArea.errors?.requiredValue}}</span>
                   <span *ngIf="poolArea.errors?.required || poolArea.errors?.empty" style="color: red">Empty! Input please!</span>
@@ -213,7 +150,7 @@
               <div class="form-group">
                 <label for="numberOfFloorsCreateVilla">Number of floors:</label>
                 <input type="text" class="form-control" id="numberOfFloorsCreateVilla"
-                       placeholder="Type new number of floors" formControlName="numberOfFloors">
+                      formControlName="numberOfFloors">
                 <div
                   *ngIf="numberOfFloors.invalid && (numberOfFloors.dirty || numberOfFloors.touched || numberOfFloors.errors?.empty)">
                     <span *ngIf="numberOfFloors.errors?.gte"
@@ -228,7 +165,7 @@
               <button type="submit" class="btn btn-primary submit-button" id="btn-create-room" style="width: 100px">
                 Create
               </button>
-              <a href="#" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
+              <a [routerLink]="['/service/list']" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
             </div>
           </div>
         </form>
@@ -242,7 +179,7 @@
         <form id="createFormHouse" method="POST" [formGroup]="createServiceForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="serviceCodeCreateVilla">Service code</label>
-            <input type="text" class="form-control" placeholder="Type new service code here"
+            <input type="text" class="form-control"
                    id="serviceCodeCreateHouse" formControlName="serviceCode">
             <div
               *ngIf="serviceCode.invalid && (serviceCode.dirty || serviceCode.touched) || serviceCode.errors?.empty">
@@ -254,7 +191,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceNameCreateVilla">Service name</label>
-                <input type="text" class="form-control" placeholder="Type new service name here"
+                <input type="text" class="form-control"
                        id="serviceNameCreateHouse" formControlName="serviceName">
                 <div
                   *ngIf="serviceName.invalid && (serviceName.dirty || serviceName.touched) || serviceName.errors?.empty">
@@ -266,7 +203,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceAreaCreateVilla">Services area (m²)</label>
-                <input type="text" class="form-control" placeholder="Type new services area here"
+                <input type="text" class="form-control"
                        id="serviceAreaCreateHouse" formControlName="serviceArea">
                 <div
                   *ngIf="serviceArea.invalid && (serviceArea.dirty || serviceArea.touched) || serviceArea.errors?.empty">
@@ -282,7 +219,7 @@
               <div class="form-group">
                 <label for="serviceCostCreateVilla">Service cost:</label>
                 <input type="text" class="form-control" id="serviceCostCreateHouse"
-                       placeholder="Type new services cost here" formControlName="serviceCost">
+                       formControlName="serviceCost">
                 <div
                   *ngIf="serviceCost.invalid && (serviceCost.dirty || serviceCost.touched) || serviceCost.errors?.empty">
                                       <span *ngIf="serviceCost.errors?.gte"
@@ -295,7 +232,7 @@
               <div class="form-group">
                 <label for="serviceMaxPeopleCreateVilla">Service max people:</label>
                 <input type="text" class="form-control" id="serviceMaxPeopleCreateHouse"
-                       placeholder="Type new services max people here" formControlName="serviceMaxPeople">
+                        formControlName="serviceMaxPeople">
                 <div
                   *ngIf="serviceMaxPeople.invalid && (serviceMaxPeople.dirty || serviceMaxPeople.touched) || serviceMaxPeople.errors?.empty">
                                       <span *ngIf="serviceMaxPeople.errors?.gte"
@@ -331,7 +268,7 @@
               <div class="form-group">
                 <label for="standardRoomCreateVilla">Standard room: </label>
                 <input type="text" class="form-control" id="standardRoomCreateHouse"
-                       placeholder="Type new standard room" formControlName="standardRoom">
+                     formControlName="standardRoom">
                 <div
                   *ngIf="standardRoom.invalid && (standardRoom.dirty || standardRoom.touched) || standardRoom.errors?.empty">
                   <span *ngIf="standardRoom.errors.required || standardRoom.errors.empty" style="color: red">Empty! Input please!</span>
@@ -342,7 +279,7 @@
               <div class="form-group">
                 <label for="numberOfFloorsCreateVilla">Number of floors:</label>
                 <input type="text" class="form-control" id="numberOfFloorsCreateHouse"
-                       placeholder="Type new number of floors" formControlName="numberOfFloors">
+                      formControlName="numberOfFloors">
                 <div
                   *ngIf="numberOfFloors.invalid && (numberOfFloors.dirty || numberOfFloors.touched || numberOfFloors.errors?.empty)">
                     <span *ngIf="numberOfFloors.errors?.gte"
@@ -357,7 +294,6 @@
               <div class="form-group">
                 <label for="descriptionOtherConvenienceCreateVilla">Description other convenience:</label>
                 <input type="text" class="form-control" id="descriptionOtherConvenienceCreateHouse"
-                       placeholder="Type new description other convenience"
                        formControlName="descriptionOtherConvenience">
                 <div
                   *ngIf="descriptionOtherConvenience.invalid && (descriptionOtherConvenience.dirty || descriptionOtherConvenience.touched) || descriptionOtherConvenience.errors?.empty">
@@ -389,7 +325,7 @@
         <form id="createFormRoom" method="POST" [formGroup]="createServiceForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="serviceCodeCreateRoom">Service code</label>
-            <input type="text" class="form-control" placeholder="Type new service code here"
+            <input type="text" class="form-control"
                    id="serviceCodeCreateRoom" formControlName="serviceCode">
             <div
               *ngIf="serviceCode.invalid && (serviceCode.dirty || serviceCode.touched) || serviceCode.errors?.empty">
@@ -401,7 +337,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceNameCreateRoom">Service name</label>
-                <input type="text" class="form-control" placeholder="Type new service name here"
+                <input type="text" class="form-control"
                        id="serviceNameCreateRoom" formControlName="serviceName">
                 <div
                   *ngIf="serviceName.invalid && (serviceName.dirty || serviceName.touched) || serviceName.errors?.empty">
@@ -413,7 +349,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="serviceAreaCreateRoom">Services area (m²)</label>
-                <input type="text" class="form-control" placeholder="Type new services area here"
+                <input type="text" class="form-control"
                        id="serviceAreaCreateRoom" formControlName="serviceArea">
                 <div
                   *ngIf="serviceArea.invalid && (serviceArea.dirty || serviceArea.touched) || serviceArea.errors?.empty">
@@ -429,7 +365,7 @@
               <div class="form-group">
                 <label for="serviceCostCreateRoom">Service cost:</label>
                 <input type="text" class="form-control" id="serviceCostCreateRoom"
-                       placeholder="Type new services cost here" formControlName="serviceCost">
+                       formControlName="serviceCost">
                 <div
                   *ngIf="serviceCost.invalid && (serviceCost.dirty || serviceCost.touched) || serviceCost.errors?.empty">
                                       <span *ngIf="serviceCost.errors?.gte"
@@ -442,7 +378,7 @@
               <div class="form-group">
                 <label for="serviceMaxPeopleCreateRoom">Service max people:</label>
                 <input type="text" class="form-control" id="serviceMaxPeopleCreateRoom"
-                       placeholder="Type new services max people here" formControlName="serviceMaxPeople">
+                       formControlName="serviceMaxPeople">
                 <div
                   *ngIf="serviceMaxPeople.invalid && (serviceMaxPeople.dirty || serviceMaxPeople.touched) || serviceMaxPeople.errors?.empty">
                                       <span *ngIf="serviceMaxPeople.errors?.gte"
@@ -478,7 +414,6 @@
               <div class="form-group">
                 <label for="descriptionOtherConvenienceCreateRoom">Description other convenience:</label>
                 <input type="text" class="form-control" id="descriptionOtherConvenienceCreateRoom"
-                       placeholder="Type new free service include"
                        formControlName="descriptionOtherConvenience">
                 <div
                   *ngIf="descriptionOtherConvenience.invalid && (descriptionOtherConvenience.dirty || descriptionOtherConvenience.touched) || descriptionOtherConvenience.errors?.empty">

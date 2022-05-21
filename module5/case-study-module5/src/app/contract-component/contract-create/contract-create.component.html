@@ -1,3 +1,5 @@
+<app-navigataion></app-navigataion>
+
 <div class="container-lg" style="margin-top: 30px">
   <div class="row">
     <div class="col-md-8 mx-auto">
@@ -33,7 +35,7 @@
               <div class="form-group">
                 <label for="contractDepositCreate">Contract deposit: </label>
                 <input type="text" class="form-control" id="contractDepositCreate"
-                       placeholder="Type new contract cost here" formControlName="contractDeposit">
+                        formControlName="contractDeposit">
                 <div
                   *ngIf="contractDeposit.invalid && (contractDeposit.dirty || contractDeposit.touched) || contractDeposit.errors?.empty">
                     <span *ngIf="contractDeposit.errors?.gte"
@@ -61,9 +63,9 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <!--                [attr.selected]="rt"-->
-                <label for="employeeCreate">Choose new employee:</label>
+                <label for="employeeCreate">Choose employee:</label>
                 <select id="employeeCreate" class="form-control" formControlName="employee">
-                  <option *ngFor="let e of employees; let first" [selected]="first" [ngValue]="e">{{e.employeeId}}
+                  <option *ngFor="let e of employees; let first" [selected]="first" [ngValue]="e">{{e.id}}
                     - {{e.employeeName}}</option>
                 </select>
                 <div
@@ -75,7 +77,7 @@
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="customerCreate">Choose new customer:</label>
+                <label for="customerCreate">Choose customer:</label>
                 <select id="customerCreate" class="form-control" formControlName="customer">
                   <option *ngFor="let c of customers; let first" [selected]="first" [ngValue]="c">{{c.customerCode}}
                     - {{c.customerName}}</option>
@@ -87,8 +89,9 @@
               </div>
             </div>
           </div>
+
           <div class="form-group">
-            <label for="servicesCreate">Choose new services:</label>
+            <label for="servicesCreate">Choose services:</label>
             <select id="servicesCreate" class="form-control" formControlName="services">
               <option *ngFor="let f of facilities; let first" [selected]="first"
                       [ngValue]="f">{{f.serviceName}}</option>
@@ -100,11 +103,11 @@
             </div>
           </div>
           <div class="submit-form">
-            <div class="text-center submit-block">
-              <button type="submit" class="button-gradient button-gradient-1" style="border: none;">
+              <div class="text-center submit-block">
+              <button type="submit" class="btn btn-primary" style="border: none;">
                 Create
               </button>
-              <a  class="button-gradient button-gradient-5" style="border: none;">Cancel</a>
+              <a class="btn btn-primary" style="border: none;">Cancel</a>
             </div>
           </div>
         </form>

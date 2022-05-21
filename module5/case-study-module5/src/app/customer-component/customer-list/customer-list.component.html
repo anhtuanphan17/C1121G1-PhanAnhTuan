@@ -1,5 +1,29 @@
-<a [routerLink]="['/customer/create']">create</a>
-<div class="container" id="main-container">
+<app-navigataion></app-navigataion>
+<div
+  class="p-5 text-center bg-image"
+  style="
+      background-image: url('https://freetuts.net/upload/tut_post/images/2021/06/29/4045/anh-wallpaperup-full-hp-4k-chat-luong-cao.jpg');
+      height: 150px;
+      margin-top: 0;
+    "
+>
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-3">List Customer</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a [routerLink]="['/customer/create']">
+  <button class="btn" style="background-color: #046056; color:white ">Add New Customer</button>
+</a>
+
+<input type="text" class="form-control" name="name" [(ngModel)]="name" (ngModelChange)="search()"
+       placeholder="Enter name to search">
+
+<div id="main-container">
   <table class="table table-hover">
     <thead>
     <tr>
@@ -18,7 +42,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let customer of customers; index as i">
+    <tr *ngFor="let customer of customers | paginate : {itemsPerPage : 2 , currentPage :p}; index as i">
       <td>{{i + 1}}</td>
       <td>{{customer.customerCode}}</td>
       <td>{{customer.customerName}}</td>
@@ -35,23 +59,21 @@
         <span *ngSwitchCase="4">Silver</span>
         <span *ngSwitchCase="4">Member</span>
       </td>
-      <td><a [routerLink]="['/customer/edit/',customer.id]">Edit</a></td>
-      <td><a (click)="onOpenEditModal(customer)" style="color: darkviolet">delete</a></td>
-      <!--      <i class="fa fa-edit"></i>-->
-      <!--      <i class="fa fa-delete"></i>-->
-      <!--    <td colspan="2" style="display: flex; justify-content: space-between">-->
-      <!--      <a type="button" ><i class="fas fa-edit"></i>edit</a>-->
-      <!--      <a type="button" ><i class="fa fa-edit"></i>-->
+      <td><a [routerLink]="['/customer/edit/',customer.id]">
+        <button class="btn btn-primary">Edit</button>
+      </a></td>
+      <td><a (click)="onOpenEditModal(customer)">
+        <button class="btn btn-primary">Delete</button>
+      </a></td>
 
-      <!--      <a type="button" ><i class="fa-solid fa-trash-can"></i>delete</a>-->
-      <!--    </td>-->
     </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
 
   <div
     class="modal fade"
-    id="deleteModAl"
+    id="deleteModal"
     data-backdrop="static"
     data-keyboard="false"
     tabindex="-1"
@@ -61,21 +83,18 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-titl" id="staticBackdropLAbel">xóa khách hàng </h5>
+          <h5 class="modal-titl" id="staticBackdropLAbel">Do you want to delete? </h5>
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           <!--                <input type="hidden" id="customerDelete_id" name="customer_id">-->
         </div>
         <div class="modal-body" id="customer_delete">
           <div class="modal-body">
             <div *ngIf="check">
-              <p>bạn có muốn xóa khách hàng : {{deleteCustomer.customerName}}</p>
-              <p>khách hàng có mã là : {{deleteCustomer.customerCode}}</p>
+              <p>Customer Name : {{deleteCustomer.customerName}}</p>
+              <p>Customer Code : {{deleteCustomer.customerCode}}</p>
             </div>
 
             <div class="modal-footer">
-              <!--            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>-->
-              <!--            <button (click)="onDeleteEmployee(deleteEmployee?.id)" class="btn btn-danger" data-dismiss="modal">Yes-->
-              <!--            </button>-->
             </div>
           </div>
         </div>

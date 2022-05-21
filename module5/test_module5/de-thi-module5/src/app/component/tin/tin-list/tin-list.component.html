@@ -1,0 +1,53 @@
+<div id="main-container">
+  <a [routerLink]="['/tin/create']">
+    <button>Dang Tin</button>
+  </a>
+
+
+  <input type="text" class="form-control" name="name" [(ngModel)]="dienTich" (ngModelChange)="getAllTinDienTich()"
+         placeholder=" dien tich to search">
+  <input type="text" class="form-control" name="name" [(ngModel)]="gia" (ngModelChange)="getAllTinGia()"
+         placeholder=" gia to search">
+
+  <input type="text" class="form-control" name="name" [(ngModel)]="huong" (ngModelChange)="getAllTinHuong()"
+         placeholder="huong to search">
+  <input type="text" class="form-control" name="name" [(ngModel)]="tatCa" (ngModelChange)="getAllTinTatCa()"
+         placeholder="Enter tat Ca to search">
+
+  <table class="table stripe">
+    <tr>
+      <td>No.</td>
+      <td>Tua De</td>
+      <td>Loai Tin</td>
+      <td>Danh Muc</td>
+      <td>Gia</td>
+      <td>Dien Tich</td>
+      <td>Huong</td>
+      <!--      <td>Trang Thai</td>-->
+      <td colspan="2">Action</td>
+    </tr>
+    <tr *ngFor="let tin of tins; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{tin.tuaDe}}</td>
+      <td ngSwitch="{{tin.loaiTin}}">
+        <span *ngSwitchCase="1">Can Ban</span>
+        <span *ngSwitchCase="2">Can Mua</span>
+        <span *ngSwitchCase="3">Cho Thue</span>
+        <span *ngSwitchCase="4">Can thue </span>
+      </td>
+      <td>{{tin.danhMuc == 1 ? 'Nha Dat' : 'Chung cu'}}</td>
+      <td>{{tin.gia}}</td>
+      <td>{{tin.dienTich}}</td>
+      <td>{{tin.huong}}</td>
+
+      <td>Edit</td>
+      <!--      <td>{{customer.customerGender == 0 ? 'Female' : 'Male'}}</td>-->
+
+      <!--      <td>{{tin.category.categoryName}}</td>-->
+      <!--      <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>-->
+      <!--      <td><a (click)="onDeleteProduct(product)">-->
+      <!--        <button class="btn btn-primary">Delete</button>-->
+      <!--      </a></td>-->
+    </tr>
+  </table>
+</div>

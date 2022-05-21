@@ -58,7 +58,7 @@ export class CustomerCreateComponent implements OnInit {
       if (this.customerCreateForm.controls.customerTypeId.value == '') {
         this.customerCreateForm.controls.customerTypeId.setErrors({empty: 'Empty! Please input!'});
       }
-    }else {
+    } else {
       const customer = this.customerCreateForm.value;
       this.customerService.saveCustomer(customer).subscribe(next => {
         this.customerCreateForm.reset();

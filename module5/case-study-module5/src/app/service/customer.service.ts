@@ -9,17 +9,17 @@ import {ICustomer} from '../model/ICustomer';
 
 export class CustomerService {
 
-  customerApi = 'http://localhost:3000/customer';
+  customerApi = 'http://localhost:8080/customer';
 
   constructor(private http: HttpClient) {
   }
 
-  getAllCustomer(): Observable<ICustomer[]> {
-    return this.http.get<ICustomer[]>(this.customerApi);
+  getAllCustomer(): Observable<any> {
+    return this.http.get<any>(this.customerApi);
   }
 
   saveCustomer(customer: ICustomer): Observable<ICustomer> {
-    return this.http.post<ICustomer>(this.customerApi, customer);
+    return this.http.post<ICustomer>(`${this.customerApi}/create`, customer);
   }
 
   findCustomerById(id: number): Observable<ICustomer> {
@@ -27,10 +27,10 @@ export class CustomerService {
   }
 
   updateCustomer(id: number, customer: ICustomer): Observable<ICustomer> {
-    return this.http.put<ICustomer>(this.customerApi + '/' + id, customer);
+    return this.http.put<ICustomer>(this.customerApi + '/edit/' + id, customer);
   }
 
   deleteCustomer(deleteCustomer: ICustomer): Observable<ICustomer> {
-    return this.http.delete<ICustomer>(this.customerApi + '/' + deleteCustomer.id);
+    return this.http.delete<ICustomer>(this.customerApi + '/delete/' + deleteCustomer.id);
   }
 }

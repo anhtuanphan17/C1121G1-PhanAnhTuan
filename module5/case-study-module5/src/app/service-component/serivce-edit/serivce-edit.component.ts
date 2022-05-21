@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {gte} from '../../model/gte';
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {IFacility} from "../../model/IFacility";
+import {FacilityService} from "../../service/facility.service";
 
 @Component({
   selector: 'app-serivce-edit',
@@ -8,35 +11,50 @@ import {gte} from '../../model/gte';
   styleUrls: ['./serivce-edit.component.css']
 })
 export class SerivceEditComponent implements OnInit {
-  check = 0;
-  editServiceForm: FormGroup;
 
-  constructor() {
-    this.editServiceForm = new FormGroup({
-      serviceCode: new FormControl('DV-1234', [Validators.required, Validators.pattern('^$|^DV-[\\d]{4}$')]),
-      serviceName: new FormControl('Sea Villa', [Validators.required, Validators.pattern('^([a-zA-Z]+[ ]?){1,250}$')]),
-      serviceImage: new FormControl('', [Validators.required]),
-      serviceArea: new FormControl('200', [Validators.required, gte]),
-      serviceCost: new FormControl('2000', [Validators.required, gte]),
-      serviceMaxPeople: new FormControl('10', [Validators.required, gte]),
-      standardRoom: new FormControl('5*', [Validators.required]),
-      descriptionOtherConvenience: new FormControl('Pool, Park,...', [Validators.required]),
-      poolArea: new FormControl('50', [Validators.required, gte]),
-      numberOfFloors: new FormControl('2', [Validators.required, gte]),
-      rentType: new FormControl('1', [Validators.required]),
-      serviceType: new FormControl('1', [Validators.required]),
-    });
+  id: Number;
+  editServiceForm: FormGroup;
+  facility: IFacility;
+  check = 0;
+
+  constructor(private facilityService: FacilityService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = Number(paramMap.get('id'));
+      // @ts-ignore
+      this.facility = this.facilityService.findById(this.id).subscribe(data => {
+        console.log(this.facility);
+        this.facility = data;
+        this.check = this.facility.serviceType;
+        console.log('haha');
+        this.editServiceForm = new FormGroup({
+          id: new FormControl(''),
+          serviceCode: new FormControl(this.facility.serviceCode, [Validators.required, Validators.pattern('^$|^DV-[\\d]{4}$')]),
+          serviceName: new FormControl(this.facility.serviceName, [Validators.required]),
+          serviceImage: new FormControl(this.facility.serviceImage, [Validators.required]),
+          serviceArea: new FormControl(this.facility.serviceArea, [Validators.required, gte]),
+          serviceCost: new FormControl(this.facility.serviceCost, [Validators.required, gte]),
+          serviceMaxPeople: new FormControl(this.facility.serviceMaxPeople, [Validators.required, gte]),
+          standardRoom: new FormControl(this.facility.standardRoom),
+          descriptionOtherConvenience: new FormControl(this.facility.descriptionOtherConvenience, [Validators.required]),
+          poolArea: new FormControl(this.facility.poolArea, [gte]),
+          numberOfFloors: new FormControl(this.facility.numberOfFloors, [gte]),
+          rentType: new FormControl(this.facility.rentType, [Validators.required]),
+          serviceType: new FormControl(this.facility.serviceType, [Validators.required]),
+        });
+      });
+    })
   }
+
 
   ngOnInit(): void {
   }
 
-  showEditForm(event) {
-    this.check = event.target.value;
-  }
 
 
   onSubmit() {
+    console.log(this.editServiceForm);
     if (this.editServiceForm.invalid) {
       if (this.serviceCode.value == '') {
         this.serviceCode.setErrors({empty: 'Empty! Please input!'});
@@ -71,8 +89,18 @@ export class SerivceEditComponent implements OnInit {
       if (this.serviceType.value == '') {
         this.serviceType.setErrors({empty: 'Empty! Please input!'});
       }
+    }else {
+      const facility = this.editServiceForm.value;
+      console.log(facility);
+      this.facilityService.updateFacility(this.id, facility).subscribe(() => {
+        alert('update successfully');
+        this.router.navigateByUrl('/service/list');
+      }, e => {
+        console.log(e);
+      });
     }
   }
+
   get serviceCode() {
     return this.editServiceForm.get('serviceCode');
   }

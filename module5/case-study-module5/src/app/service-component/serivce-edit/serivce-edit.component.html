@@ -1,21 +1,13 @@
-
-
-<div style="display: flex; justify-content: center; margin-top: 30px">
-  <select name="serviceType" id="createSelection" class="form-control mb-3" style="width: 550px;"
-          (change)="showEditForm($event)">
-    <option value="0" selected>Select the type of service to create</option>
-    <option value="1">Create villa</option>
-    <option value="2">Create house</option>
-    <option value="3">Create room</option>
-  </select>
-</div>
+<app-navigataion></app-navigataion>
+<h2 style="text-align:  center">Edit Service</h2>
 
 <div class="container"
      style="background-repeat: no-repeat;background-size: 100% 100%">
   <!--</form>-->
-  <div *ngIf="check == 0" style="width: 100%; height: 700px"></div>
+<!--  <div *ngIf=" == 0" style="width: 100%; height: 700px"></div>-->
   <!--VILLA FORM CREATE-->
   <div *ngIf="check == 1">
+
     <div class="backgroundVilla">
       <div class="container" id="villa">
         <form id="createFormVilla" method="POST" [formGroup]="editServiceForm" (ngSubmit)="onSubmit()">
@@ -164,7 +156,7 @@
           <div class="submit-form">
             <div class="text-center submit-block">
               <button type="submit" class="btn btn-primary submit-button" id="btn-create-room" style="width: 100px">
-                Create
+                Edit
               </button>
               <a href="#" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
             </div>
@@ -311,7 +303,7 @@
           <div class="submit-form">
             <div class="text-center submit-block">
               <button type="submit" class="btn btn-primary submit-button" id="btn-create-room" style="width: 100px">
-                Create
+                Edit
               </button>
               <a href="#" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
             </div>
@@ -432,9 +424,9 @@
           <div class="submit-form">
             <div class="text-center submit-block">
               <button type="submit" class="btn btn-primary submit-button" id="btn-create-room" style="width: 100px">
-                Create
+                Edit
               </button>
-              <a href="#" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
+              <a [routerLink]="['/service/list']" class="btn btn-primary submit-cancel" style="width: 100px">Cancel</a>
             </div>
           </div>
         </form>

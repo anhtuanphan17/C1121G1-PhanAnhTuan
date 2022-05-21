@@ -1,5 +1,6 @@
+<app-navigataion></app-navigataion>
+
 <div class="mx-auto w-75 mt-5">
-  <a [routerLink]="['']">customer list</a>
   <h2>Create Customer Form</h2>
   <form [formGroup]="customerCreateForm" (ngSubmit)="submitCustomerCreateForm()" class="row g-3">
     <div class="col-md-6">
@@ -8,11 +9,11 @@
       <input formControlName="customerCode" type="text" class="form-control" name="customerCode" id="customerCode">
       <div
         *ngIf="customerCreateForm.controls.customerCode.invalid && (customerCreateForm.controls.customerCode.dirty || customerCreateForm.controls.customerCode.touched)">
-        <small *ngIf="customerCreateForm.controls.customerCode.hasError('pattern')" style="color: red">Wrong format, ex:
+        <small *ngIf="customerCreateForm.controls.customerCode.hasError('pattern')" class="form-text text-danger">Wrong format, ex:
           KH-0123</small>
         <small
           *ngIf="customerCreateForm.controls.customerCode.hasError('required') || customerCreateForm.controls.customerCode.errors.empty"
-          style="color: red">Empty! Input please!</small>
+         class="form-text text-danger">Please input customer code.</small>
       </div>
     </div>
 
@@ -21,8 +22,8 @@
       <input formControlName="customerName" type="text" class="form-control" id="customerName">
       <div
         *ngIf="customerCreateForm.controls.customerName.invalid&&(customerCreateForm.controls.customerName.touched||customerCreateForm.controls.customerName.dirty)">
-        <small class="form-text text-danger" *ngIf="customerCreateForm.controls.customerName.hasError('required')">please
-          input customer name</small>
+        <small class="form-text text-danger" *ngIf="customerCreateForm.controls.customerName.hasError('required')">Please
+          input customer name.</small>
       </div>
     </div>
 
@@ -34,7 +35,7 @@
         *ngIf="customerCreateForm.controls.customerBirthday.invalid && (customerCreateForm.controls.customerBirthday.dirty || customerCreateForm.controls.customerBirthday.touched) || customerCreateForm.controls.customerBirthday.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerBirthday.errors.required || customerCreateForm.controls.customerBirthday.errors.empty"
-          style="color: red">Please choose a date!</small>
+          class="form-text text-danger">Please choose a date!</small>
       </div>
     </div>
 
@@ -47,9 +48,9 @@
         customerCreateForm.controls.customerIdCard.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerIdCard.errors.required || customerCreateForm.controls.customerIdCard.errors.empty"
-          style="color: red">please input Customer Id Card</small>
+          class="form-text text-danger">please input Customer Id Card</small>
         <small class="form-text text-danger" *ngIf="customerCreateForm.controls.customerIdCard.errors.pattern">
-          wrong format of customer Id Card(include 9 number)
+          Wrong format of customer Id Card(include 9 number).
         </small>
       </div>
     </div>
@@ -63,7 +64,7 @@
         customerCreateForm.controls.customerPhone.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerPhone.errors.required || customerCreateForm.controls.customerPhone.errors.empty"
-          style="color: red">please input customerPhone</small>
+          class="form-text text-danger">please input customerPhone</small>
         <small class="form-text text-danger" *ngIf="customerCreateForm.controls.customerPhone.errors.pattern">
           Wrong format, ex: 090xxxxxxx or 091xxxxxxx or (84)+90xxxxxxx or (84)+91xxxxxxx
         </small>
@@ -74,7 +75,7 @@
       <label class="form-label">Customer Gender</label>
       <select formControlName="customerGender" name="customerGender" class="form-select">
         <option selected value="1">Male</option>
-        <option value="2">Female</option>
+        <option value="0">Female</option>
       </select>
       <!--      <label>Select customer gender:</label><br>-->
       <!--      <input type="radio" id="female" value='0' formControlName="customerGender" style="margin: 10px;">-->
@@ -86,11 +87,25 @@
          || customerCreateForm.controls.customerGender.touched) || customerCreateForm.controls.customerGender.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerGender.errors?.required || customerCreateForm.controls.customerGender.errors?.empty"
-          style="color: red">Please choose customer gender!</small>
+          class="form-text text-danger">Please choose customer gender.</small>
       </div>
     </div>
 
 
+
+
+    <div class="col-md-6">
+
+      <label class="form-label" for="email">Email:</label>
+      <input id="email" type="text" class="form-control" formControlName="customerEmail">
+      <div
+        *ngIf="customerCreateForm.controls.customerEmail.invalid && (customerCreateForm.controls.customerEmail.dirty || customerCreateForm.controls.customerEmail.touched) || customerCreateForm.controls.customerEmail.errors?.empty">
+        <small *ngIf="customerCreateForm.controls.customerEmail.errors.email" class="form-text text-danger">Wrong format, ex: abc@gmail.com</small>
+        <small
+          *ngIf="customerCreateForm.controls.customerEmail.errors.required || customerCreateForm.controls.customerEmail.errors.empty"
+          class="form-text text-danger">Please input email.</small>
+      </div>
+    </div>
 
 
     <div class="col-md-6">
@@ -101,12 +116,13 @@
         <option value="3">Gold</option>
         <option value="4">Member</option>
       </select>
+
       <div
         *ngIf="customerCreateForm.controls.customerTypeId.invalid && (customerCreateForm.controls.customerTypeId.dirty
          || customerCreateForm.controls.customerTypeId.touched) || customerCreateForm.controls.customerTypeId.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerTypeId.errors?.required || customerCreateForm.controls.customerTypeId.errors?.empty"
-          style="color: red">please choose customer type</small>
+          class="form-text text-danger">please choose customer type</small>
       </div>
     </div>
 
@@ -118,13 +134,13 @@
          || customerCreateForm.controls.customerAddress.touched) || customerCreateForm.controls.customerAddress.errors?.empty">
         <small
           *ngIf="customerCreateForm.controls.customerAddress.errors?.required || customerCreateForm.controls.customerAddress.errors?.empty"
-          style="color: red">please input address</small>
+          class="form-text text-danger">please input address</small>
       </div>
     </div>
 
 
     <div class="col-12"  style="display: flex; justify-content: center" >
-      <button type="submit" class="btn btn-primary btn-block mb-4"  >Create</button>
+      <button type="submit" class="btn btn-primary btn-block mb-4" >Create</button>
     </div>
   </form>
 </div>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ICustomer} from '../../model/ICustomer';
 import {CustomerService} from '../../service/customer.service';
-import {HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-customer-list',
@@ -12,23 +13,33 @@ export class CustomerListComponent implements OnInit {
   check = false;
   deleteCustomer: ICustomer;
   customers: ICustomer[] = [];
+  p = 1;
+  name: string;
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService, private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.findAllCustomer();
+
+    // @ts-ignore
+    // this.response = this.http.get('http://localhost:8080/customer');
+    // this.response.subscribe((data) => {
+    //   this.customers = data;
+    // })
+
   }
 
   findAllCustomer() {
     this.customerService.getAllCustomer().subscribe((customers) => {
-      this.customers = customers;
+      this.customers = customers.content;
       console.log(this.customers);
     });
   }
 
   onOpenEditModal(a: ICustomer): void {
     console.log('haha');
+    console.log(a);
     this.deleteCustomer = a;
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -50,4 +61,13 @@ export class CustomerListComponent implements OnInit {
     });
   }
 
+  search() {
+    if (this.name === '') {
+      this.ngOnInit();
+    } else {
+      this.customers = this.customers.filter(res => {
+        return res.customerName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      });
+    }
+  }
 }

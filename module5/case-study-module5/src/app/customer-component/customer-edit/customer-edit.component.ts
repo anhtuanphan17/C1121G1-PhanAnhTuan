@@ -22,6 +22,25 @@ export class CustomerEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCustomer(id: number) {
+    return this.customerService.findCustomerById(id).subscribe(customer => {
+      this.customerEditForm = new FormGroup({
+        id : new FormControl(customer.id),
+        customerCode: new FormControl(customer.customerCode, [Validators.required, Validators.pattern('^(KH-){1}\\d{4}$')]),
+        customerName: new FormControl(customer.customerName, [Validators.required]),
+        customerBirthday: new FormControl(customer.customerBirthday, [Validators.required]),
+        customerGender: new FormControl(customer.customerGender, [Validators.required]),
+        customerIdCard: new FormControl(customer.customerIdCard, [Validators.required, Validators.pattern('^\\d{9}$')]),
+        // tslint:disable-next-line:max-line-length
+        customerPhone: new FormControl(customer.customerPhone, [Validators.required, Validators.pattern('^$|^(0|\\(84\\)\\+)9[0|1]\\d{7}$')]),
+        customerEmail: new FormControl(customer.customerEmail, [Validators.required, Validators.email]),
+        customerAddress: new FormControl(customer.customerAddress, [Validators.required]),
+        customerTypeId: new FormControl(customer.customerTypeId, [Validators.required]),
+      });
+    });
+  }
+
+
   submitCustomerEditForm() {
     if (this.customerEditForm.invalid) {
       if (this.customerEditForm.controls.customerCode.value == '') {
@@ -50,33 +69,18 @@ export class CustomerEditComponent implements OnInit {
       }
       if (this.customerEditForm.controls.customerTypeId.value == '') {
         this.customerEditForm.controls.customerTypeId.setErrors({empty: 'Empty! Please input!'});
-      } else {
-        const customer = this.customerEditForm.value;
-        console.log(customer);
-        this.customerService.updateCustomer(this.id, customer).subscribe(() => {
-          alert('update successfully');
-          this.router.navigateByUrl('');
-        }, e => {
-          console.log(e);
-        });
       }
-    }
-  }
-
-  getCustomer(id: number) {
-    return this.customerService.findCustomerById(id).subscribe(customer => {
-      this.customerEditForm = new FormGroup({
-        customerCode: new FormControl(customer.customerCode, [Validators.required, Validators.pattern('^(KH-){1}\\d{4}$')]),
-        customerName: new FormControl(customer.customerName, [Validators.required]),
-        customerBirthday: new FormControl(customer.customerBirthday, [Validators.required]),
-        customerGender: new FormControl(customer.customerGender, [Validators.required]),
-        customerIdCard: new FormControl(customer.customerIdCard, [Validators.required, Validators.pattern('^\\d{9}$')]),
-        // tslint:disable-next-line:max-line-length
-        customerPhone: new FormControl(customer.customerPhone, [Validators.required, Validators.pattern('^$|^(0|\\(84\\)\\+)9[0|1]\\d{7}$')]),
-        customerEmail: new FormControl(customer.customerEmail, [Validators.required, Validators.email]),
-        customerAddress: new FormControl(customer.customerAddress, [Validators.required]),
-        customerTypeId: new FormControl(customer.customerTypeId, [Validators.required]),
+    } else {
+      const customer = this.customerEditForm.value;
+      console.log(customer);
+      this.customerService.updateCustomer(this.id, customer).subscribe(() => {
+        alert('update successfully');
+        this.router.navigateByUrl('/customer/list');
+      }, e => {
+        console.log(e);
       });
-    });
+    }
+
   }
 }
+

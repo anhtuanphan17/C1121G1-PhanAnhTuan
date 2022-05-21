@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IFacility} from '../../model/IFacility';
+import {FacilityService} from "../../service/facility.service";
+import {ICustomer} from "../../model/ICustomer";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-service-list',
@@ -7,58 +10,61 @@ import {IFacility} from '../../model/IFacility';
   styleUrls: ['./service-list.component.css']
 })
 export class ServiceListComponent implements OnInit {
-  facilities: IFacility[] = [
-    {
-      serviceId: 1,
-      serviceCode: 'DV-0001',
-      serviceName: 'Villa Beach Front',
-      serviceImage: 'https://furamavietnam.com/wp-content/uploads/2020/04/04-Facilities-Maintenance.jpg',
-      serviceArea: 600,
-      serviceCost: 1000,
-      serviceMaxPeople: 10,
-      standardRoom: 'vip',
-      descriptionOtherConvenience: 'Public Pool',
-      poolArea: 500,
-      numberOfFloors: 4,
-      rentType: 1,
-      serviceType: 1,
-    },
-    {
-      serviceId: 2,
-      serviceCode: 'DV-0002',
-      serviceName: 'House Princess 01',
-      serviceImage: 'https://furamavietnam.com/wp-content/uploads/2020/04/04-Facilities-Maintenance.jpg',
-      serviceArea: 250,
-      serviceCost: 600,
-      serviceMaxPeople: 7,
-      standardRoom: 'vip',
-      descriptionOtherConvenience: 'Sauna room',
-      poolArea: 0,
-      numberOfFloors: 3,
-      rentType: 1,
-      serviceType: 2
-    },
-    {
-      serviceId: 3,
-      serviceCode: 'DV-0003',
-      serviceName: 'Room Twin 01',
-      serviceImage: 'https://furamavietnam.com/wp-content/uploads/2020/04/04-Facilities-Maintenance.jpg',
-      serviceArea: 45,
-      serviceCost: 250,
-      serviceMaxPeople: 2,
-      standardRoom: 'normal',
-      descriptionOtherConvenience: 'Gym Room',
-      poolArea: 0,
-      numberOfFloors: 0,
-      rentType: 1,
-      serviceType: 3
-    }
-  ];
 
-  constructor() {
+  facilities: IFacility[] = [];
+  deletedFacility: IFacility;
+  check: boolean = false;
+  name: any;
+
+  constructor(private facilityService: FacilityService) {
+
   }
 
   ngOnInit(): void {
+    this.getAllFacility();
   }
+
+  getAllFacility() {
+    this.facilityService.getAllService().subscribe(data => {
+      this.facilities = data;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onOpenDeleteModal(facility: IFacility) {
+    console.log('haha');
+    console.log(facility);
+    this.deletedFacility = facility;
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#deleteModal');
+    container.appendChild(button);
+    this.check = true;
+    button.click();
+  }
+
+  delete(event) {
+    this.facilityService.deleteFacility(this.deletedFacility).subscribe(() => {
+      event.click();
+      this.ngOnInit();
+    }, (error: HttpErrorResponse) => {
+      alert('error');
+    });
+  }
+
+  search() {
+    if (this.name === '') {
+      this.ngOnInit();
+    } else {
+      this.facilities = this.facilities.filter(res => {
+        return res.serviceName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      });
+    }
+  }
+
 
 }

@@ -4,7 +4,7 @@ import {IEmployee} from './IEmployee';
 
 
 export interface IContract {
-  contractId: number;
+  id: number;
   contractStartDate: string;
   contractEndDate: string;
   contractDeposit: number;

@@ -1,5 +1,5 @@
 export interface IFacility {
-  serviceId: number;
+  id: number;
   serviceCode: string;
   serviceName: string;
   serviceArea: number;

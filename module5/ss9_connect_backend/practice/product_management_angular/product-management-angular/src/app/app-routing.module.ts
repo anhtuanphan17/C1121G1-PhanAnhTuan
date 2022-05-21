@@ -6,7 +6,7 @@ import {Routes, RouterModule} from '@angular/router';
 const routes: Routes = [
   {
     path: 'product',
-    loadChildren: () => import('./product/product.module').then(module => module.ProductModule)
+    loadChildren: () => import('./product-component/product.module').then(module => module.ProductModule)
   },
   {
     path: 'category',

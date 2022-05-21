@@ -4,6 +4,10 @@ import {IEmployee} from '../../model/IEmployee';
 import {ICustomer} from '../../model/ICustomer';
 import {IFacility} from '../../model/IFacility';
 import {gte} from '../../model/gte';
+import {ContractService} from '../../service/contract.service';
+import {EmployeeService} from '../../service/employee.service';
+import {FacilityService} from '../../service/facility.service';
+import {CustomerService} from '../../service/customer.service';
 
 @Component({
   selector: 'app-contract-create',
@@ -12,13 +16,20 @@ import {gte} from '../../model/gte';
 })
 export class ContractCreateComponent implements OnInit {
   contractCreateForm: FormGroup;
-  employees: IEmployee[] = [];
+  employees: any = [];
   customers: ICustomer[] = [];
   facilities: IFacility[] = [];
 
-  constructor(){}
+  constructor(private contractService: ContractService,
+              private employeeService: EmployeeService,
+              private facilityService: FacilityService,
+              private customerService: CustomerService) {
+  }
 
   ngOnInit(): void {
+  this.getAllCustomer();
+  this.getAllEmployee();
+  this.getAllService()
     this.contractCreateForm = new FormGroup({
       contractStartDate: new FormControl('', [Validators.required]),
       contractEndDate: new FormControl('', [Validators.required]),
@@ -29,6 +40,30 @@ export class ContractCreateComponent implements OnInit {
       services: new FormControl('', [Validators.required]),
     });
   }
+
+  getAllEmployee() {
+    this.employeeService.getAllEmployee().subscribe(data1 => {
+      this.employees = data1;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getAllService() {
+    this.facilityService.getAllService().subscribe(data => {
+      this.facilities = data;
+    }, error => {
+    });
+  }
+
+  getAllCustomer() {
+    this.customerService.getAllCustomer().subscribe(data2 => {
+      this.customers = data2;
+    }, error => {
+      console.log(error);
+    });
+  }
+
 
   get contractStartDate() {
     return this.contractCreateForm.get('contractStartDate');
@@ -57,6 +92,7 @@ export class ContractCreateComponent implements OnInit {
   get services() {
     return this.contractCreateForm.get('services');
   }
+
   onSubmit() {
     if (this.contractCreateForm.invalid) {
       if (this.contractStartDate.value == '') {
@@ -81,14 +117,21 @@ export class ContractCreateComponent implements OnInit {
         this.services.setErrors({empty: 'Empty! Please choose!'});
       }
 
-      if (this.contractStartDate.value != '' && this.contractEndDate.value != ''){
+      if (this.contractStartDate.value != '' && this.contractEndDate.value != '') {
         const contractStartDateParse = new Date(this.contractStartDate.value);
         const contractEndDateParse = new Date(this.contractEndDate.value);
-        if (contractStartDateParse > contractEndDateParse){
+        if (contractStartDateParse > contractEndDateParse) {
           this.contractStartDate.setErrors({dateErrors: 'Start date must be before end date! Please choose again!'});
           this.contractEndDate.setErrors({dateErrors: 'End date must be after start date! Please choose again!'});
         }
       }
+    } else {
+      const contract = this.contractCreateForm.value;
+      this.contractService.createContract(contract).subscribe(() => {
+        console.log('created successfully');
+      }, err => {
+        console.log(err);
+      });
     }
   }
 }

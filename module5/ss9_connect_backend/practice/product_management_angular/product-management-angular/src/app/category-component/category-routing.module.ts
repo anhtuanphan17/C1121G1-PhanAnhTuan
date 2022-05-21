@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CategoryComponent} from "./category/category.component";
+import {CategoryComponent} from "./category-list/category.component";
 import {CategoryCreateComponent} from "./category-create/category-create.component";
 import {CategoryEditComponent} from "./category-edit/category-edit.component";
 
