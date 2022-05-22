@@ -1,13 +1,20 @@
+import {DanhMuc} from './danh-muc';
+
 export interface Tin {
   id: number;
-  danhMuc: string;
-  nguoiDangTin: string;
-  loaiTin: string;
+  vungMien: number;
+  daiDien: string;
+  loaiBaiViet: string;
   tinhTrang: string;
   diaChi: string;
-  dienTich: 200;
+  dienTich: number;
   huong: string;
   tuaDe: string;
   noiDung: string;
-  gia: 200000;
+  gia: number;
+  ngayDang: string;
+  trangThai: string;
+  danhMuc: DanhMuc;
+
 }
+

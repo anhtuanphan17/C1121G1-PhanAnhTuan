@@ -1,20 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {TinListComponent} from "./component/tin/tin-list/tin-list.component";
-import {TinCreateComponent} from "./component/tin/tin-create/tin-create.component";
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {TinListComponent} from './component/tin/tin-list/tin-list.component';
+import {TinCreateComponent} from './component/tin/tin-create/tin-create.component';
+import {TinEditComponent} from './component/tin/tin-edit/tin-edit.component';
 
 
 const routes: Routes = [
-  {path: 'tin/list', component:TinListComponent},
-  {path: 'tin/create', component:TinCreateComponent},
-  // {path: 'product/edit/:id', component:ProductEditComponent},
-  // {path: 'tin/list', component:CategoryListComponent},
-  // {path: 'tin/create', component:CategoryCreateComponent},
-  // {path: 'tin/edit/:id', component:CategoryEditComponent}
+  {path: 'tin/list', component: TinListComponent},
+  {path: 'tin/create', component: TinCreateComponent},
+  {path: 'tin/edit/:id', component: TinEditComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

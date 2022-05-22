@@ -10,13 +10,15 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { TinListComponent } from './component/tin/tin-list/tin-list.component';
 import { TinCreateComponent } from './component/tin/tin-create/tin-create.component';
+import { TinEditComponent } from './component/tin/tin-edit/tin-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     TinListComponent,
-    TinCreateComponent
+    TinCreateComponent,
+    TinEditComponent
   ],
   imports: [
     BrowserModule,

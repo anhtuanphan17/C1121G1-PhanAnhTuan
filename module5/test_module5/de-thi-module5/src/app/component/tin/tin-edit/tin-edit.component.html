@@ -5,7 +5,7 @@
     <input formControlName="id" type="hidden">
     <div class="col-md-6">
       <label class="form-label">Danh Muc</label>
-      <select  formControlName="danhMuc" name="danhMuc" class="form-control">
+      <select  formControlName="danhMuc" name="danhMuc" class="form-control" [compareWith]="compare">
         <option *ngFor="let danhMuc of danhMucList" [ngValue]="danhMuc">{{danhMuc.tenDanhMuc}}</option>
       </select>
 
@@ -235,13 +235,9 @@
 
     <div style="display:flex;justify-content: center; width: 100%; margin-top: 20px">
       <button type="submit" class="btn btn-primary">
-        Create
+        Edit
       </button>
 
-
-      <a (click)="onCreateTin()">
-        <button class="btn btn-primary">Dang</button>
-      </a>
 
       <a [routerLink]="['/tin']" style="margin-left: 10px" class="btn btn-primary">
         Cancel
@@ -252,38 +248,3 @@
   </form>
 </div>
 
-
-<div
-  class="modal fade"
-  id="deleteModal"
-  data-backdrop="static"
-  data-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-titl" id="staticBackdropLAbel">Ban Co Muon Tao Tin </h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
-        <!--                <input type="hidden" id="customerDelete_id" name="customer_id">-->
-      </div>
-      <div class="modal-body" id="customer_delete">
-        <div class="modal-body">
-          <div *ngIf="check">
-            <p>Product Name : {{tinForm.value}}</p>
-            <!--            <p>Price  : {{deletedProduct.price}}</p>-->
-          </div>
-
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a (click)="create(closeModal)" type="button" class="btn btn-primary" id="delete_customer_id">ok</a>
-      </div>
-    </div>
-  </div>
-</div>

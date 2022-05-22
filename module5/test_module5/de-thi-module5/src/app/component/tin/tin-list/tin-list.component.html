@@ -16,38 +16,76 @@
 
   <table class="table stripe">
     <tr>
-      <td>No.</td>
-      <td>Tua De</td>
-      <td>Loai Tin</td>
-      <td>Danh Muc</td>
-      <td>Gia</td>
-      <td>Dien Tich</td>
-      <td>Huong</td>
-      <!--      <td>Trang Thai</td>-->
-      <td colspan="2">Action</td>
+      <th>STT</th>
+      <th>Tiêu đề</th>
+      <th>Loại bài viết</th>
+      <th>Danh Mục</th>
+      <th>Ngày Đăng</th>
+      <th>Trạng Thái</th>
+      <th>Diện Tích</th>
+      <th>Hướng</th>
+      <th>Giá</th>
+      <th colspan="2" class="text-center">Action</th>
     </tr>
     <tr *ngFor="let tin of tins; index as i">
       <td>{{i + 1}}</td>
       <td>{{tin.tuaDe}}</td>
-      <td ngSwitch="{{tin.loaiTin}}">
+      <td ngSwitch="{{tin.loaiBaiViet}}">
         <span *ngSwitchCase="1">Can Ban</span>
         <span *ngSwitchCase="2">Can Mua</span>
         <span *ngSwitchCase="3">Cho Thue</span>
         <span *ngSwitchCase="4">Can thue </span>
       </td>
-      <td>{{tin.danhMuc == 1 ? 'Nha Dat' : 'Chung cu'}}</td>
-      <td>{{tin.gia}}</td>
+      <td>{{tin.danhMuc.tenDanhMuc == 1 ? 'Nha Dat' : 'Chung cu'}}</td>
+      <td>{{tin.ngayDang}}</td>
+      <td>{{tin.trangThai}}</td>
       <td>{{tin.dienTich}}</td>
       <td>{{tin.huong}}</td>
+      <td>{{tin.gia}}</td>
+      <td>
+        <a [routerLink]="['/tin/edit',tin.id]">Edit</a>
 
-      <td>Edit</td>
-      <!--      <td>{{customer.customerGender == 0 ? 'Female' : 'Male'}}</td>-->
-
-      <!--      <td>{{tin.category.categoryName}}</td>-->
-      <!--      <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>-->
-      <!--      <td><a (click)="onDeleteProduct(product)">-->
-      <!--        <button class="btn btn-primary">Delete</button>-->
-      <!--      </a></td>-->
+      </td>
+      <td><a (click)="onDeleteTin(tin)">
+        <button class="btn btn-primary">Delete</button>
+      </a></td>
     </tr>
   </table>
+</div>
+
+
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-titl" id="staticBackdropLAbel">Do you want to delete? </h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
+        <!--                <input type="hidden" id="customerDelete_id" name="customer_id">-->
+      </div>
+      <div class="modal-body" id="customer_delete">
+        <div class="modal-body">
+          <div *ngIf="check">
+            <p>Tua De : {{deletedTin.tuaDe}}</p>
+            <p>Loai tin : {{deletedTin.loaiBaiViet}}</p>
+          </div>
+
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="delete(closeModal)" type="button" class="btn btn-primary" id="delete_customer_id">ok</button>
+      </div>
+    </div>
+  </div>
 </div>
