@@ -33,4 +33,9 @@ public class TinService implements ITinService {
     public void deleteById(Integer id) {
         this.tinRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Tin> searchByAll(String huong, Pageable pageable) {
+        return this.tinRepository.findAllByHuongContaining(huong, pageable);
+    }
 }

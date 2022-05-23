@@ -12,59 +12,26 @@ export class TinListComponent implements OnInit {
   tins: Tin[] = [];
   dienTich: any = '';
   gia: any = '';
-  tatCa: any = '';
-  huong: any;
+  huong = '';
   deletedTin: Tin;
-   check = false;
+  check = false;
+  page = 0;
+  totalPages = 0;
+  message = '';
+  sortSelect = '';
 
   constructor(private tinService: TinService) {
   }
 
   ngOnInit(): void {
-    this.getAllTin();
+    this.loadAll();
   }
 
-  getAllTin() {
-    this.tinService.findAllTin().subscribe((data) => {
+  loadAll() {
+    this.tinService.getAllTins('', '', '', this.page, this.sortSelect).subscribe(data => {
       this.tins = data.content;
-      console.log(this.tins);
-    }, err => {
-      console.log(err);
-    });
-  }
-
-  getAllTinTatCa() {
-    this.tinService.findAllTinTatCa(this.tatCa).subscribe(data => {
-      this.tins = data;
-      console.log(this.tins);
-    }, err => {
-      console.log(err);
-    });
-  }
-
-
-  getAllTinDienTich() {
-    this.tinService.findAlltinDienTich(this.dienTich).subscribe(data => {
-      this.tins = data;
-      console.log(this.tins);
-    }, err => {
-      console.log(err);
-    });
-  }
-
-  getAllTinGia() {
-    this.tinService.findAllTinGia(this.gia).subscribe(data => {
-      this.tins = data;
-      console.log(this.tins);
-    }, err => {
-      console.log(err);
-    });
-  }
-
-  getAllTinHuong() {
-    this.tinService.findAllTinHuong(this.huong).subscribe(data => {
-      this.tins = data;
-      console.log(this.tins);
+      this.page = data.number;
+      this.totalPages = data.totalPages;
     }, err => {
       console.log(err);
     });
@@ -91,5 +58,44 @@ export class TinListComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       alert('error');
     });
+  }
+
+  search(dienTich: string, gia: string, huong: string) {
+    this.tinService.getAllTins(dienTich, gia, huong, this.page, this.sortSelect).subscribe(data => {
+      this.tins = data.content;
+      this.totalPages = data.totalPages;
+      this.page = data.number;
+      if (this.tins.length < 1) {
+        this.message = 'KHÔNG TÌM THẤY !';
+      }
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  next() {
+    if (this.page < this.totalPages - 1) {
+      this.tinService.getAllTins(this.dienTich, this.gia, this.huong, this.page + 1, this.sortSelect).subscribe(
+        data => {
+          this.tins = data.content;
+          this.page = data.number;
+        }, err => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  previous() {
+    if (this.page > 0) {
+      this.tinService.getAllTins(this.dienTich, this.gia, this.huong, this.page - 1, this.sortSelect).subscribe(
+        data => {
+          this.tins = data.content;
+          this.page = data.number;
+        }, err => {
+          console.log(err);
+        }
+      );
+    }
   }
 }

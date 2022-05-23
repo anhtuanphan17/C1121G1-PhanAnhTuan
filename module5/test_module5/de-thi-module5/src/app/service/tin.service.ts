@@ -50,4 +50,9 @@ export class TinService {
   deleteTin(deletedTin: Tin): Observable<Tin> {
     return this.http.delete<Tin>(this.tinApi + '/delete/' + deletedTin.id);
   }
+
+  getAllTins(dienTich: string, gia: string, huong: string, page: number, sortSelect: string): Observable<any> {
+    return this.http.get<any>(`${this.tinApi}?page=${page}&huong=${huong}`);
+  }
+
 }
